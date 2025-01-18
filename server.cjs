@@ -1,25 +1,21 @@
 const express = require("express");
-const axios = require("axios");
 const cors = require("cors")
+const path = require("node:path")
 
 
+const PORT = process.env.PORT || 3000
 
 const app = express();
 const port = 3000;
 
-app.use(cors())
+app.use(express.json())
+app.use(express.static(path.join(__dirname,"dist")))
 
-app.get("/manga", async (req, res) => {
-  try {
-    const response = await axios.get(
-      "https://api.mangadex.org/manga?limit=24&title=dt&includedTagsMode=AND&excludedTagsMode=OR&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&order[latestUploadedChapter]=desc"
-    );
-    res.json(response.data);
-  } catch (error) {
-    res.status(500).json({ error: "Error fetching data from MangaDex" });
-  }
-});
+app.get("*",(req,response) => {
+  response.sendFile(path.join(__dirname,"dist","index.html"))
+})
 
-app.listen(port, () => {
-  console.log(`Proxy server running at http://localhost:${port}`);
-});
+
+app.listen(PORT,() => {
+  console.log(`Servidor run:         http://localhost:${PORT}`)
+})
