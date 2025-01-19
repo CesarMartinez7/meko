@@ -1,9 +1,35 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,memo} from "react";
 import {  useParams } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { Anime } from "../Types/Anime";
+import { Character } from "../Types/Character";
 
-export default function Manga() {
+
+
+
+const Characters = ({id} : number ) => {
+  const [charaters,setCharacters] = useState<Character[]>([])
+  const url = `https://api.jikan.moe/v4/anime/${id}/characters`
+  useEffect(() => {
+    fetch(url).then(response => response.json()).then(data => setCharacters(data.data) ).catch(err  => console.log(err))
+  },[])
+  return(
+    <div>
+      <ul className="flex">
+      {charaters.map((character) => (
+        <li className="p-2">
+          <img src={character.character.images.jpg.image_url} alt={`Imagen de ${character.character.name}`} />
+          <h4>{character.character.name}</h4>
+        </li>
+      ))}
+
+      </ul>
+    </div>
+  )
+} 
+
+
+function  Manga() {
   const { id } = useParams();
   const [anime, setAnime] = useState<Anime | null>(null);
   const endPoint = `https://api.jikan.moe/v4/anime/${id}/full`;
@@ -26,7 +52,7 @@ export default function Manga() {
             className="rounded-2xl shadow-md w-full h-full"
           />
         </div>
-        <h3 className="font-semibold text-7xl">{anime?.title}</h3>
+        <h3 className="font-semibold text-7xl bg-gradient-to-br from-slate-900 to-zinc-500 bg-clip-text text-transparent">{anime?.title}</h3>
         <ul className="flex gap-3">
           {anime?.genres.map((gen) => (
             <li className="badge">{gen.name}</li>
@@ -58,7 +84,13 @@ export default function Manga() {
             src={anime?.trailer.embed_url}
           ></iframe>
         </div>
+        <div>
+          <Characters id={id}></Characters>
+        </div>
       </div>
     </div>
   );
 }
+
+
+export default memo(Manga)
