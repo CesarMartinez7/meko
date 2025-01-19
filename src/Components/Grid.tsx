@@ -16,7 +16,6 @@ export default function Grid({url, text = "Tus resultados"} : GridProps){
     const url2 = `https://api.jikan.moe/v4/anime?q=${query}` 
     useEffect(() => {
         fetch(url.length === 0 ? url2 : url).then(response => response.json()).then(datae => {
-            console.log(datae)
             setLoading(false)
             setData(datae.data)}).catch(err => console.log(`Error ${err}`))
     },[query,setQuery])

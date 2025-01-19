@@ -5,9 +5,11 @@ import { Anime } from "../Types/Anime";
 import { Character } from "../Types/Character";
 
 
+interface CharacteProps{
+  id: string | number | undefined
+}
 
-
-const Characters = ({id} : number ) => {
+const Characters = ({id} : CharacteProps ) => {
   const [charaters,setCharacters] = useState<Character[]>([])
   const url = `https://api.jikan.moe/v4/anime/${id}/characters`
   useEffect(() => {
@@ -37,7 +39,6 @@ function  Manga() {
     fetch(endPoint)
       .then((response) => response.json())
       .then((dataa) => {
-        console.log(dataa.data);
         setAnime(dataa.data);
       });
   }, [id]);
