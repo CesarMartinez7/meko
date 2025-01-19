@@ -2,7 +2,7 @@ import { useState, useEffect,memo} from "react";
 import {  useParams } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { Anime } from "../Types/Anime";
-import { Character } from "../Types/Character";
+// import { Character } from "../Types/Character";
 
 
 // interface CharacteProps{
