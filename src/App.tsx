@@ -1,40 +1,32 @@
 
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
-import { useEffect } from 'react'
+import {  useState,createContext} from 'react'
 import './App.css'
 import allLazy from './Routers/lazy'
-import Navbar from "./Components/navbar"
-import { IStaticMethods } from 'flyonui/flyonui';
-const {Main,Manga} = allLazy
+import Navbar from "./Components/Navbar"
+import HomePage from './Pages/Home'
+const {Search,Manga} = allLazy
 
-declare global {
-  interface Window {
-    HSStaticMethods: IStaticMethods;
-  }
-}
 
+type StateContextType = [string, React.Dispatch<React.SetStateAction<string>>];
+
+
+export const QueryContext = createContext<StateContextType | undefined>(undefined)
 
 function App() {
-  
-
-  useEffect(() => {
-    const loadFlyonui = async () => {
-      await import('flyonui/flyonui');
-
-      window.HSStaticMethods.autoInit();
-    };
-
-    loadFlyonui();
-  }, []);
+  const [query,setQuery] = useState("")
   return (
     <>
+    <QueryContext.Provider value={{query,setQuery}}>
       <BrowserRouter>
-      <Navbar name={"Mangapyu"}></Navbar>
+      <Navbar></Navbar>
         <Routes>
-          <Route path='/' element={<Main></Main>}></Route>
-          <Route path='/manga/:id' element={<Manga></Manga>}  ></Route>
+          <Route path='/' element={<HomePage></HomePage>}></Route>
+          <Route path='/anime/:id' element={<Manga></Manga>}></Route>
+          <Route path='/search' element={<Search url='' text='Tus Resultados'></Search>}></Route>
         </Routes>
       </BrowserRouter>
+    </QueryContext.Provider>
     </>
   )
 }

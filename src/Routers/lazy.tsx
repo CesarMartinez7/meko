@@ -1,12 +1,12 @@
 import { lazy } from "react";
 
 
-const Main = lazy(() => import("../Fetch"))
-const Manga = lazy(() => import("../Pages/manga"))
+const Search = lazy(() => import("../Components/Grid"))
+const Manga = lazy(() => import("../Pages/Anime"))
 
 
 const allLazy =  {
-    Main:Main,
+    Search:Search,
     Manga:Manga
 }
 
