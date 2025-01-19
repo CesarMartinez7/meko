@@ -86,7 +86,7 @@ function  Manga() {
           ></iframe>
         </div>
         <div>
-          <Characters id={id}></Characters>
+          
         </div>
       </div>
     </div>
