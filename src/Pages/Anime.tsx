@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { data, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { Anime } from "../Types/Anime";
 

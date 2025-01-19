@@ -2,11 +2,17 @@ import { useNavigate } from "react-router-dom";
 import { Anime } from "../Types/Anime";
 
 
-export default function HoverCard({item}) {
-  const handleAnchor = (e) => {
+interface HoverCardProps {
+  item: Anime
+}
+
+
+export default function HoverCard({item}: HoverCardProps) {
+  const navigate = useNavigate();
+  
+  const handleAnchor = () => {
     navigate(`/anime/${item?.mal_id}`);
   };
-  const navigate = useNavigate();
   return (
     <a
       className="relative overflow-hidden shadow-lg group rounded-2xl p-0.5 z-10"
@@ -25,7 +31,7 @@ export default function HoverCard({item}) {
           </h3>
           <div className="flex justify-between">
             <p className="text-[10px]">
-              <span>{item?.release_date}</span>
+              <span>{item.airing}</span>
             </p>
           </div>
         </div>

@@ -7,11 +7,17 @@ import Navbar from "./Components/Navbar"
 import HomePage from './Pages/Home'
 const {Search,Manga} = allLazy
 
+interface QueryContextType {
+  query: string;
+  setQuery: (query: string) => void;
+}
 
-type StateContextType = [string, React.Dispatch<React.SetStateAction<string>>];
+const defaultValue: QueryContextType = {
+  query: "",
+  setQuery: function () { }, // Función vacía por defecto
+};
 
-
-export const QueryContext = createContext<StateContextType | undefined>(undefined)
+export const QueryContext = createContext<QueryContextType>(defaultValue);
 
 function App() {
   const [query,setQuery] = useState("")

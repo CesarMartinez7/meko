@@ -3,12 +3,12 @@ import { useContext,useRef } from "react";
 import { QueryContext } from "../App";
 
 export default function Navbar() {
-    const inputRef = useRef()
+    const inputRef = useRef <HTMLInputElement>(null)
     const toSearchNavigate = useNavigate()
-    const {setQuery,query} = useContext(QueryContext)
-    const handleSubmit = (e) => {
+    const {setQuery} = useContext(QueryContext)
+    const handleSubmit = (e : React.SyntheticEvent) => {
         e.preventDefault()
-        setQuery(inputRef.current.value)
+        setQuery(inputRef?.current?.value || "")
         toSearchNavigate("/search")
     }
   return (
