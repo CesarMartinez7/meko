@@ -12,7 +12,7 @@ export default function Navbar() {
         toSearchNavigate("/search")
     }
   return (
-    <div className="navbar bg-base-100 glassMorf">
+    <div className="navbar bg-base-100 glassMorf sticky top-0 z-50">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl">daisyUI</a>
       </div>
