@@ -106,7 +106,7 @@ function Manga() {
             </div>
           </div>
         </div>
-        <div>{/* <Characters id={id}></Characters> */}</div>
+        <div> <Characters id={id}></Characters></div>
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ export default function ViewAnime (){
             <div>Video {id}</div>
             <div >
                 <section >
-                <h1 className="font-medium">Estas viendo</h1>
+                <h1 className="font-medium">Estas viendo {chapter}</h1>
 
                 </section>
                 <ul className="grid grid-cols-12 gap-2">
