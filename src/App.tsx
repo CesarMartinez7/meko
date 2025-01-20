@@ -32,7 +32,7 @@ function App() {
             <Route path="/loading" element={<Loading></Loading>}></Route>
             <Route path="/" element={<HomePage></HomePage>}></Route>
             <Route path="/anime/:id" element={<Manga></Manga>}></Route>
-            <Route path="/anime/:id/play" element={<ViewAnime/>}></Route>
+            <Route path="/anime/:id/:name/play" element={<ViewAnime/>}></Route>
             <Route
               path="/search"
               element={<Search url="" text="Tus Resultados"></Search>}

@@ -45,6 +45,7 @@ const Characters = ({ id }: CharactersProps) => {
       >
         {characters.map((character) => (
           <li
+            key={character.character.mal_id}
             className="rounded-lg flex-shrink-0 h-48 z-10 hover:scale-105 duration-200 relative"
             data-hidden="1"
           >
@@ -83,8 +84,15 @@ const Characters = ({ id }: CharactersProps) => {
 };
 
 function Manga() {
-  const handleCLickNavigate = (id: string | any) => {
-    navigate(`/anime/${id}/play`);
+  function formatToSlug(text: string) {
+    return text
+      .toLowerCase() // Convierte a minúsculas
+      .trim() // Elimina espacios en los extremos
+      .replace(/\s+/g, "-") // Reemplaza espacios por guiones
+      .replace(/[^\w\-]+/g, ""); // Elimina caracteres especiales
+  }
+  const handleCLickNavigate = (id: number | undefined, name: string ) => {
+    navigate(`/anime/${id}/:${formatToSlug(name)}/play`);
   };
   const navigate = useNavigate();
   const { id } = useParams();
@@ -125,7 +133,7 @@ function Manga() {
           <button
             className="btn btn-wide my-2 "
             onClick={() => {
-              handleCLickNavigate(anime?.mal_id);
+              handleCLickNavigate(anime?.mal_id,anime?.title);
             }}
           >
             {" "}
@@ -152,7 +160,7 @@ function Manga() {
             <div className="w-full h-full flex flex-col justify-center items-center">
               <iframe
                 title={anime?.title_japanese}
-                className="rounded-xl w-[60%] h-full"
+                className="rounded-xl w-[60%] h-[350px]"
                 src={anime?.trailer.embed_url}
               ></iframe>
             </div>
