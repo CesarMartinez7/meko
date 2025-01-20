@@ -4,13 +4,42 @@ import { Icon } from "@iconify/react";
 import { Anime } from "../Types/Anime";
 import { Character } from "../Types/Character";
 
-interface CharacteProps {
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+
+const SwapSl= () => {
+  return (
+    <Swiper
+      spaceBetween={50}
+      slidesPerView={3}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+      <SwiperSlide>Slide 1</SwiperSlide>
+      <SwiperSlide>Slide 2</SwiperSlide>
+      <SwiperSlide>Slide 3</SwiperSlide>
+      <SwiperSlide>Slide 4</SwiperSlide>
+      ...
+    </Swiper>
+  );
+};
+
+
+interface CharactersProps {
   id: string | number | undefined;
 }
 
-const Characters = ({ id }: CharacteProps) => {
+
+
+
+
+const Characters = ({ id }: CharactersProps) => {
   const [charaters, setCharacters] = useState<Character[]>([]);
   const url = `https://api.jikan.moe/v4/anime/${id}/characters`;
+
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
@@ -18,23 +47,32 @@ const Characters = ({ id }: CharacteProps) => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div>
+    <div className="mt-12">
       <h3 className="font-medium">Casting</h3>
-      <ul className="flex overflow-hidden w-full">
+      <ul className="overflow-hidden gap-2 flex w-full max-w-full" id="list">
         {charaters.map((character) => (
-          <li className="p-2 w-32 rounded-lg flex-shrink-0">
+          
+          <li className=" rounded-lg flex-shrink-0 h-48 bg-black">
             <img
               src={character.character.images.jpg.image_url}
-              className="rounded-lg "
+              className="rounded-lg w-fit h-full object-cover"
               alt={`Imagen de ${character.character.name}`}
             />
-            <h4>{character.character.name}</h4>
           </li>
         ))}
       </ul>
+      <div className="inline-flex">
+      <button className="btn">Next</button>
+      <button className="btn">Back</button>
+
+      </div>
     </div>
   );
 };
+
+
+
+
 
 function Manga() {
   const handleCLickNavigate = (id: string | any) => {
@@ -106,7 +144,9 @@ function Manga() {
             </div>
           </div>
         </div>
-        <div> <Characters id={id}></Characters></div>
+        <div> <Characters id={id}></Characters>
+            <Swap></Swap>
+        </div>
       </div>
     </div>
   );

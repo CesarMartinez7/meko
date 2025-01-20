@@ -12,7 +12,8 @@ export default function Navbar() {
     toSearchNavigate("/search");
   };
   return (
-    <div className="navbar bg-base-100 glassMorf sticky top-0 z-50">
+    <div className="px-3 sticky top-1">
+      <div className="navbar bg-base-100 glassMorf  z-50 ">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl bg-gradient-to-br from-slate-900 to-zinc-500 bg-clip-text text-transparent">
           animePyu
@@ -55,5 +56,7 @@ export default function Navbar() {
         </div>
       </div>
     </div>
+    </div>
+    
   );
 }
