@@ -6,6 +6,7 @@ import Navbar from "./Components/Navbar";
 import HomePage from "./Pages/Home";
 import Loading from "./Components/Loding";
 const { Search, Manga, ViewAnime} = allLazy;
+import Footer from "./Components/Footer";
 
 interface QueryContextType {
   query: string;
@@ -22,7 +23,8 @@ export const QueryContext = createContext<QueryContextType>(defaultValue);
 function App() {
   const [query, setQuery] = useState("");
   return (
-    <Suspense fallback={<Loading/>}>
+    <div className="flex flex-col">
+    <Suspense fallback={<Loading/>} >
       <QueryContext.Provider value={{ query, setQuery }}>
         <BrowserRouter>
           <Navbar></Navbar>
@@ -35,9 +37,14 @@ function App() {
               element={<Search url="" text="Tus Resultados"></Search>}
             ></Route>
           </Routes>
+          <div className="mt-auto">
+          <Footer/>
+
+          </div>
         </BrowserRouter>
       </QueryContext.Provider>
     </Suspense>
+    </div>
   );
 }
 

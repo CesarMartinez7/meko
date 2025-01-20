@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useContext, useRef } from "react";
 import { QueryContext } from "../App";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 export default function Navbar() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -12,11 +13,11 @@ export default function Navbar() {
     toSearchNavigate("/search");
   };
   return (
-    <div className="px-3 sticky top-1">
+    <div className="px-3 sticky top-1 z-40">
       <div className="navbar bg-base-100 glassMorf  z-50 ">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl bg-gradient-to-br from-slate-900 to-zinc-500 bg-clip-text text-transparent">
-          animePyu
+          animePy
         </a>
       </div>
       <div className="flex-none gap-2">
@@ -35,7 +36,9 @@ export default function Navbar() {
             tabIndex={0}
             role="button"
             className="btn btn-ghost btn-circle avatar"
-          ></button>
+          >
+            <Icon icon="tabler:user" width="24" height="24" />
+          </button>
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
