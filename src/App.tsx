@@ -5,7 +5,7 @@ import allLazy from "./Routers/lazy";
 import Navbar from "./Components/Navbar";
 import HomePage from "./Pages/Home";
 import Loading from "./Components/Loding";
-const { Search, Manga } = allLazy;
+const { Search, Manga, ViewAnime} = allLazy;
 
 interface QueryContextType {
   query: string;
@@ -29,6 +29,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage></HomePage>}></Route>
             <Route path="/anime/:id" element={<Manga></Manga>}></Route>
+            <Route path="/anime/:id/play" element={<ViewAnime/>}></Route>
             <Route
               path="/search"
               element={<Search url="" text="Tus Resultados"></Search>}

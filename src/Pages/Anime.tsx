@@ -17,10 +17,11 @@ const Characters = ({id} : CharacteProps ) => {
   },[])
   return(
     <div>
-      <ul className="flex">
+      <h3 className="font-medium">Casting</h3>
+      <ul className="flex overflow-hidden w-full">
       {charaters.map((character) => (
-        <li className="p-2">
-          <img src={character.character.images.jpg.image_url} alt={`Imagen de ${character.character.name}`} />
+        <li className="p-2 w-32 rounded-lg flex-shrink-0">
+          <img src={character.character.images.jpg.image_url} className="rounded-lg "alt={`Imagen de ${character.character.name}`} />
           <h4>{character.character.name}</h4>
         </li>
       ))}
