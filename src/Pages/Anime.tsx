@@ -1,5 +1,5 @@
 import { useState, useEffect,memo} from "react";
-import {  useParams } from "react-router-dom";
+import {  useParams, useNavigate} from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { Anime } from "../Types/Anime";
 import { Character } from "../Types/Character";
@@ -33,6 +33,11 @@ const Characters = ({id} : CharacteProps ) => {
 
 
 function  Manga() {
+
+  const handleCLickNavigate = (id: string | any) => {
+    navigate(`/anime/${id}/play`)
+  }
+  const navigate = useNavigate(null)
   const { id } = useParams();
   const [anime, setAnime] = useState<Anime | null>(null);
   const endPoint = `https://api.jikan.moe/v4/anime/${id}/full`;
@@ -62,7 +67,9 @@ function  Manga() {
         </ul>
 
         <div>
-          <button className="btn btn-wide my-2 ">
+          <button className="btn btn-wide my-2 " onClick={() => {
+            handleCLickNavigate(anime?.mal_id)
+          }}>
             {" "}
             <Icon icon="solar:play-line-duotone" width="20" height="20" />
             Play
