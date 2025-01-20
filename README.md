@@ -1,50 +1,59 @@
-# React + TypeScript + Vite
+# AnimePy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AnimePy es una aplicación de streaming de anime que permite a los usuarios buscar, ver y explorar diferentes animes. La aplicación está construida con React y utiliza la API de Jikan para obtener datos de anime.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Búsqueda de Anime**: Los usuarios pueden buscar animes por nombre.
+- **Exploración de Animes Populares**: Los usuarios pueden ver los animes más populares y mejor valorados.
+- **Visualización de Detalles del Anime**: Los usuarios pueden ver detalles específicos de cada anime, incluyendo sinopsis, géneros, y trailers.
+- **Reproducción de Anime**: Los usuarios pueden reproducir episodios de anime directamente en la aplicación.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Instalación
 
-- Configure the top-level `parserOptions` property like this:
+1. Clona el repositorio:
+    ```sh
+    git clone https://github.com/tu-usuario/animepy.git
+    cd animepy
+    ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+2. Instala las dependencias:
+    ```sh
+    npm install
+    ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+3. Crea un archivo [.env](http://_vscodecontentref_/12) en la raíz del proyecto y añade las variables de entorno necesarias.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Uso
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Inicia el servidor de desarrollo:
+    ```sh
+    npm run dev
+    ```
+
+2. Abre tu navegador y navega a `http://localhost:3000` para ver la aplicación en funcionamiento.
+
+## Scripts Disponibles
+
+- `npm run dev`: Inicia el servidor de desarrollo.
+- `npm run build`: Compila la aplicación para producción.
+- `npm run lint`: Ejecuta ESLint para encontrar y arreglar problemas en el código.
+- `npm run preview`: Previsualiza la aplicación compilada.
+- `npm start`: Inicia el servidor de producción.
+
+## Dependencias
+
+- **React**: Biblioteca de JavaScript para construir interfaces de usuario.
+- **React Router DOM**: Enrutador para aplicaciones React.
+- **Axios**: Cliente HTTP para realizar solicitudes a la API de Jikan.
+- **Express**: Framework para construir aplicaciones web en Node.js.
+- **Tailwind CSS**: Framework de CSS para diseñar interfaces de usuario.
+
+## Contribuciones
+
+Las contribuciones son bienvenidas. Por favor, abre un issue o envía un pull request para contribuir al proyecto.
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT.
