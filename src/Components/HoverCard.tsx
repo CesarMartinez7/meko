@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Anime } from "../Types/Anime";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 
 interface HoverCardProps {
@@ -30,9 +31,14 @@ export default function HoverCard({item}: HoverCardProps) {
             {item?.title}
           </h3>
           <div className="flex justify-between">
-            <p className="text-[10px]">
-              <span>{item.airing}</span>
-            </p>
+            <div className="text-[10px] inline-flex items-center gap-1 justify-center">
+            <Icon icon="solar:clock-circle-outline" width="12" height="12" />
+              <span>{item.duration}</span>
+            </div>
+            <div className="text-[10px] inline-flex items-center gap-1 justify-center">
+            <Icon icon="solar:star-linear" width="12" height="12" color="yellow" />
+              <span>{item.score}</span>
+            </div>
           </div>
         </div>
       </div>
