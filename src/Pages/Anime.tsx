@@ -39,14 +39,14 @@ const Characters = ({ id }: CharactersProps) => {
     <div className="mt-12">
       <h3 className="font-medium mb-2">Casting</h3>
       <ul
-        className="overflow-hidden gap-6 flex flex-nowrap w-full max-w-full"
+        className="overflow-hidden gap-6 flex flex-nowrap w-full max-w-full "
         id="list"
         style={{ scrollBehavior: "smooth" }}
       >
         {characters.map((character) => (
           <li
             key={character.character.mal_id}
-            className="rounded-lg flex-shrink-0 h-48 z-10 hover:scale-105 duration-200 relative"
+            className="rounded-lg flex-shrink-0 h-48  hover:scale-110  z-20 duration-200 relative"
             data-hidden="1"
           >
             <img
@@ -54,7 +54,7 @@ const Characters = ({ id }: CharactersProps) => {
               className="rounded-lg w-fit h-full object-cover  -z-10"
               alt={`Imagen de ${character.character.name}`}
             />
-            <div className="absolute inset-0 hover:z-30  bg-gradient-to-b w-full h-full from-slate-900 to-transparent duration-200 scale-105 rounded-xl text-white text-[11px] p-3">
+            <div className="absolute inset-0 hover:z-30  bg-gradient-to-b w-full h-full from-slate-900 to-transparent duration-200  rounded-xl text-white text-[11px] p-3">
               <div className="flex justify-between">
                 <span className="text-white ">{character.character.name}</span>
                 <span> {"<3"} {character.favorites}</span>
@@ -110,7 +110,7 @@ function Manga() {
   return (
     <div className="mt-auto ">
       <div className="w-full h-[30vh] bg-gradient-to-b  bg-stone-950"></div>
-      <div className="p-10 rounded-lg top-48 absolute w-full z-0 ">
+      <div className="p-10 rounded-lg top-48 md:absolute w-full z-0 ">
         <div className=" w-64">
           <img
             src={anime?.images.jpg.large_image_url}
@@ -119,7 +119,7 @@ function Manga() {
           />
         </div>
       </div>
-      <div className="p-10 mt-52 grid grid-cols-1 gap-6">
+      <div className="px-5 md:p-10 md:mt-52 grid grid-cols-1 gap-6">
         <h3 className="font-semibold text-7xl bg-gradient-to-br from-slate-900 to-zinc-500 bg-clip-text text-transparent">
           {anime?.title}
         </h3>
@@ -144,30 +144,25 @@ function Manga() {
           </button>
         </div>
         {/* // Stats y  datos */}
-        <div>
-          <p className="font-extralight btn btn-sm">{anime?.title_japanese}</p>
-          <span className="font-extralight text-sm">{anime?.duration}</span>
-          <button className="btn btn-circle">
-            <Icon icon="solar:star-line-duotone" width="24" height="24" />
-            {anime?.score}
-          </button>
-        </div>
-        <div className="grid md:grid-cols-2 xl:grid-cols-2 divide-x">
+        
+        <div className="grid md:grid-cols-2 xl:grid-cols-2 md:divide-x gap-5">
           <div className="border-gray-100 pr-6 ">
             <h3 className="font-medium">Sypnosis</h3>
             <p className="font-light mt-2 text-pretty">{anime?.synopsis}</p>
           </div>
           <div className="flex flex-col  justify-center w-full h-full">
             <h3 className="font-medium text-xl text-center ">Trailer</h3>
-            <div className="w-full h-full flex flex-col justify-center items-center">
+            <div className="w-full h-full flex flex-col justify-center items-center mt">
               <iframe
                 title={anime?.title_japanese}
-                className="rounded-xl w-[60%] h-[350px]"
-                src={anime?.trailer.embed_url}
+                className="rounded-xl w-full md:w-[80%] lg:w-[80%] h-[350px]"
+                src={anime?.trailer.embed_url === null || undefined || "" ? "https://www.youtube.com/embed/U90cfBuZSJU?enablejsapi=1&wmode=opaque&autoplay=1" : anime?.trailer.embed_url}
+                id="trailer"
               ></iframe>
             </div>
           </div>
         </div>
+        
         <div>
           {" "}
           <Characters id={id}></Characters>
