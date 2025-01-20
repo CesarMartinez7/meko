@@ -3,15 +3,14 @@ import { useParams } from "react-router-dom";
 import { Chapters } from "../Types/Chapter";
 
 export default function ViewAnime() {
-  function formatToSlug(text: string) {
-    return text
-      .toLowerCase() // Convierte a minúsculas
-      .trim() // Elimina espacios en los extremos
-      .replace(/\s+/g, "-") // Reemplaza espacios por guiones
-      .replace(/[^\w\-]+/g, ""); // Elimina caracteres especiales
-  }
+//   function formatToSlug(text: string) {
+//     return text
+//       .toLowerCase() // Convierte a minúsculas
+//       .trim() // Elimina espacios en los extremos
+//       .replace(/\s+/g, "-") // Reemplaza espacios por guiones
+//       .replace(/[^\w\-]+/g, ""); // Elimina caracteres especiales
+//   }
   const [data, setData] = useState<Array<Chapters>>([]);
-  const [anime, setAnime] = useState();
   const [chapter, setChapter] = useState<number>(0);
   const { id, name } = useParams();
 
@@ -29,8 +28,8 @@ export default function ViewAnime() {
         <iframe
           className="w-full h-screen"
           src={`https://vidsrc.cc/v2/embed/anime/${id}/${chapter}/sub`}
-          frameborder="0"
-          allowfullscreen
+          frameBorder="0"
+          allowFullScreen
         ></iframe>
       </div>
       <div className="p-12">

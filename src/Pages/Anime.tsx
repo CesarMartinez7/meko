@@ -91,8 +91,10 @@ function Manga() {
       .replace(/\s+/g, "-") // Reemplaza espacios por guiones
       .replace(/[^\w\-]+/g, ""); // Elimina caracteres especiales
   }
-  const handleCLickNavigate = (id: number | undefined, name: string ) => {
-    navigate(`/anime/${id}/:${formatToSlug(name)}/play`);
+  const handleCLickNavigate = (id: number | undefined, name: string | null | undefined) => {
+    if(id && name){
+      navigate(`/anime/${id}/:${formatToSlug(name)}/play`);
+    }
   };
   const navigate = useNavigate();
   const { id } = useParams();
