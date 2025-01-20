@@ -24,14 +24,14 @@ const Characters = ({ id }: CharactersProps) => {
   const handleNext = () => {
     const list = document.getElementById("list") as HTMLElement | null;
     if (list) {
-      list.scrollLeft += 300; 
+      list.scrollLeft += 300;
     }
   };
 
   const handleBack = () => {
     const list = document.getElementById("list") as HTMLElement | null;
     if (list) {
-      list.scrollLeft -= 300; 
+      list.scrollLeft -= 300;
     }
   };
 
@@ -39,20 +39,26 @@ const Characters = ({ id }: CharactersProps) => {
     <div className="mt-12">
       <h3 className="font-medium mb-2">Casting</h3>
       <ul
-        className="overflow-hidden gap-2 flex flex-nowrap w-full max-w-full"
+        className="overflow-hidden gap-6 flex flex-nowrap w-full max-w-full"
         id="list"
         style={{ scrollBehavior: "smooth" }}
       >
         {characters.map((character) => (
           <li
-            className="rounded-lg flex-shrink-0 h-48 bg-black"
+            className="rounded-lg flex-shrink-0 h-48 z-10 hover:scale-105 duration-200 relative"
             data-hidden="1"
           >
             <img
               src={character.character.images.jpg.image_url}
-              className="rounded-lg w-fit h-full object-cover"
+              className="rounded-lg w-fit h-full object-cover  -z-10"
               alt={`Imagen de ${character.character.name}`}
             />
+            <div className="absolute inset-0 hover:z-30  bg-gradient-to-b w-full h-full from-slate-900 to-transparent duration-200 scale-105 rounded-xl text-white text-[11px] p-3">
+              <div className="flex justify-between">
+                <span className="text-white ">{character.character.name}</span>
+                <span> {"<3"} {character.favorites}</span>
+              </div>
+            </div>
           </li>
         ))}
       </ul>
@@ -68,7 +74,6 @@ const Characters = ({ id }: CharactersProps) => {
           onClick={handleNext}
           className="btn px-4 py-2 rounded-lg font-medium"
         >
-          
           Siguiente
           <Icon icon="tabler:chevrons-right" width="24" height="24" />
         </button>
@@ -130,13 +135,12 @@ function Manga() {
         </div>
         {/* // Stats y  datos */}
         <div>
-        <p className="font-extralight btn btn-sm">{anime?.title_japanese}</p>
-        <span className="font-extralight text-sm">{anime?.duration}</span>
-        <button className="btn btn-circle">
-          <Icon icon="solar:star-line-duotone" width="24" height="24" />
-          {anime?.score}
-        </button>
-
+          <p className="font-extralight btn btn-sm">{anime?.title_japanese}</p>
+          <span className="font-extralight text-sm">{anime?.duration}</span>
+          <button className="btn btn-circle">
+            <Icon icon="solar:star-line-duotone" width="24" height="24" />
+            {anime?.score}
+          </button>
         </div>
         <div className="grid md:grid-cols-2 xl:grid-cols-2 divide-x">
           <div className="border-gray-100 pr-6 ">
@@ -144,7 +148,7 @@ function Manga() {
             <p className="font-light mt-2 text-pretty">{anime?.synopsis}</p>
           </div>
           <div className="flex flex-col  justify-center w-full h-full">
-              <h3 className="font-medium text-xl text-center ">Trailer</h3>
+            <h3 className="font-medium text-xl text-center ">Trailer</h3>
             <div className="w-full h-full flex flex-col justify-center items-center">
               <iframe
                 title={anime?.title_japanese}
