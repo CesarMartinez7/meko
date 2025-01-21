@@ -64,6 +64,7 @@ export default function Navbar() {
           </div>
           <div className="dropdown dropdown-end">
             <button
+            type="button"
               tabIndex={0}
               role="button"
               className="btn btn-ghost btn-circle avatar"
