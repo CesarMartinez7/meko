@@ -14,7 +14,8 @@ export default {
     themes: [
       "light",
       "dracula",
-      "dark"
+      "dark",
+      "winter"
     ],
   },
   

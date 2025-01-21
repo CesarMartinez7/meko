@@ -63,7 +63,7 @@ export default function Navbar() {
             </label>
           </div>
           <div className="dropdown dropdown-end">
-            <button
+            <button 
             type="button"
               tabIndex={0}
               role="button"
