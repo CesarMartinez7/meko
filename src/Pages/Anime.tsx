@@ -108,8 +108,8 @@ function Manga() {
       });
   }, [id]);
   return (
-    <div className="mt-auto ">
-      <div className="w-full h-[30vh] bg-gradient-to-b  bg-stone-950"></div>
+    <div className="mt-auto lg:p-7">
+      <div className="w-full h-[30vh] bg-gradient-to-b  bg-stone-950 rounded-md"></div>
       <div className="p-10 rounded-lg top-48 md:absolute w-full z-0 ">
         <div className=" w-64">
           <img
@@ -149,6 +149,7 @@ function Manga() {
           <div className="border-gray-100 pr-6 ">
             <h3 className="font-medium">Sypnosis</h3>
             <p className="font-light mt-2 text-pretty">{anime?.synopsis}</p>
+            <button className="bradge ">{anime?.rank}</button>
           </div>
           <div className="flex flex-col  justify-center w-full h-full">
             <h3 className="font-medium text-xl text-center ">Trailer</h3>
