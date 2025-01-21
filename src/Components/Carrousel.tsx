@@ -17,6 +17,10 @@ export default function Carrusel() {
   };
 
   const handlePrev = () => {
+    const carrusel = document.getElementById("carrusel") as HTMLElement | null;
+    if(carrusel){
+      carrusel.scrollIntoView({ behavior: "smooth" });
+    }
     setIndex((prevIndex) => (prevIndex - 1 + animes.length) % animes.length);
   };
 
