@@ -157,7 +157,7 @@ function Manga() {
               <iframe
                 title={anime?.title_japanese}
                 className="rounded-xl w-full md:w-[80%] lg:w-[80%] h-[350px]"
-                src={anime?.trailer.embed_url === null || undefined || "" ? "https://www.youtube.com/embed/U90cfBuZSJU?enablejsapi=1&wmode=opaque&autoplay=1" : anime?.trailer.embed_url}
+                src={anime?.trailer.embed_url === null || undefined || "" ? "https://www.youtube.com/embed/U90cfBuZSJU?enablejsapi=1" : anime?.trailer.embed_url}
                 id="trailer"
               ></iframe>
             </div>
