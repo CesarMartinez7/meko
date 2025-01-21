@@ -59,7 +59,8 @@ export default function Carrusel() {
                   <p className="text-white font-light">{anime.background}</p>
                   <div className="inline-flex gap-3 font-light text-[13px]">
                     <p>{anime.duration}</p>
-                    <p>{anime.score}</p>
+                    
+                    <div className="flex gap-1 items-center justify-center"><span><Icon icon="solar:star-linear" width="13" height="13" /></span>{anime.score}</div>
                     <p className="text-white">{new Date().getFullYear()}</p>
                   </div>
                   <div className="flex gap-4">
