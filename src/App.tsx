@@ -7,6 +7,7 @@ import HomePage from "./Pages/Home";
 import Loading from "./Components/Loding";
 const { Search, Manga, ViewAnime} = allLazy;
 import Footer from "./Components/Footer";
+import Carrusel from "./Components/Carrousel";
 
 interface QueryContextType {
   query: string;
@@ -29,6 +30,7 @@ function App() {
         <BrowserRouter>
           <Navbar></Navbar>
           <Routes>
+            <Route path="/carrusel" element={<Carrusel></Carrusel>}></Route>
             <Route path="/loading" element={<Loading></Loading>}></Route>
             <Route path="/" element={<HomePage></HomePage>}></Route>
             <Route path="/anime/:id" element={<Manga></Manga>}></Route>
