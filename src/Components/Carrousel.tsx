@@ -1,14 +1,20 @@
 import { useState, useEffect } from "react";
 import { Anime } from "../Types/Anime";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import Loading from "./Loding";
 
 export default function Carrusel() {
   const [animes, setAnimes] = useState<Anime[]>([]);
   const [index, setIndex] = useState(0);
+  const [loading,setLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://api.jikan.moe/v4/top/anime?type=movie")
       .then((response) => response.json())
-      .then((data) => setAnimes(data.data))
+      .then((data) => {
+        setAnimes(data.data)
+        setLoading(false)
+      } )
       .catch((err) => console.log(err));
   }, []);
 
@@ -23,6 +29,8 @@ export default function Carrusel() {
     }
     setIndex((prevIndex) => (prevIndex - 1 + animes.length) % animes.length);
   };
+
+  if(loading) return <Loading/>
 
   return (
     <div className="h-screen mt-4 w-full">
@@ -50,8 +58,8 @@ export default function Carrusel() {
           ))}
         </div>
         <div className="absolute inset-0 bg-gradient-to-t p-28 flex flex-row justify-between items-center">
-          <button type="button" className="kbd" onClick={handlePrev}>Anterior</button>
-          <button type="button" className="kbd" onClick={handleNext}>Siguiente</button>
+          <button type="button" className="btn btn-circle" onClick={handlePrev}><Icon icon="solar:alt-arrow-left-linear" width="24" height="24" /></button>
+          <button type="button" className="btn btn-circle" onClick={handleNext}><Icon icon="solar:alt-arrow-right-line-duotone" width="24" height="24" /></button>
         </div>
       </div>
     </div>
