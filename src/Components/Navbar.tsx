@@ -13,14 +13,14 @@ export default function Navbar() {
     toSearchNavigate("/search");
   };
   return (
-    <div className="px-3 sticky top-1 z-40 shadow-md">
-      <div className="navbar bg-base-100 glassMorf  z-50 ">
+    <div className="px-3 sticky top-1 z-40 ">
+      <div className="navbar bg-base-100 glassMorf  shadow-lg">
         <div className="flex-1">
           <a
             className="btn btn-ghost text-xl bg-gradient-to-br from-slate-900 to-zinc-500 bg-clip-text text-transparent"
             href="/"
           >
-            animePy
+            animepy
           </a>
         </div>
         <div className="flex-none gap-2">

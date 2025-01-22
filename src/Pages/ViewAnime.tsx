@@ -3,17 +3,9 @@ import { useParams } from "react-router-dom";
 import { Chapters } from "../Types/Chapter";
 
 export default function ViewAnime() {
-//   function formatToSlug(text: string) {
-//     return text
-//       .toLowerCase() // Convierte a minúsculas
-//       .trim() // Elimina espacios en los extremos
-//       .replace(/\s+/g, "-") // Reemplaza espacios por guiones
-//       .replace(/[^\w\-]+/g, ""); // Elimina caracteres especiales
-//   }
   const [data, setData] = useState<Array<Chapters>>([]);
   const [chapter, setChapter] = useState<number>(1);
   const { id, name } = useParams();
-
 
   useEffect(() => {
     const url = `https://api.jikan.moe/v4/anime/${id}/episodes`;
@@ -34,10 +26,16 @@ export default function ViewAnime() {
       </div>
       <div className="p-12">
         <section>
-          <h3 className="font-medium text-xl">{name?.toUpperCase().slice(1,name?.length)}</h3>
-            <p>Episodio {chapter}</p>
+          <h3 className="font-bold text-3xl bg-gradient-to-br from-slate-900 to-zinc-500 bg-clip-text text-transparent">
+            {name?.toUpperCase().slice(1, name?.length)}
+          </h3>
+          <p className="font-light">Episodio {chapter}</p>
+          <div className="flex gap-2 mb-4">
+            <button className="btn btn-sm btn-neutral">Vidlink</button>
+            <button className="btn btn-sm btn-neutral">Vidsrc</button>
+          </div>
         </section>
-        <ul className="grid grid-cols-12 gap-2">
+        <ul className="grid grid-cols-4 lg:grid-cols-10 gap-2">
           {Array.from({ length: data.length }, (_, i) => (
             <li
               key={i}
