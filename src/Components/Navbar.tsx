@@ -13,7 +13,7 @@ export default function Navbar() {
     toSearchNavigate("/search");
   };
   return (
-    <div className="px-3 sticky top-1 z-40">
+    <div className="px-3 sticky top-1 z-40 shadow-md">
       <div className="navbar bg-base-100 glassMorf  z-50 ">
         <div className="flex-1">
           <a

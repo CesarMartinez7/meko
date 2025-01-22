@@ -37,16 +37,16 @@ const Characters = ({ id }: CharactersProps) => {
 
   return (
     <div className="mt-12">
-      <h3 className="font-medium mb-2">Casting</h3>
+      <h3 className="font-semibold mb-2">Casting</h3>
       <ul
-        className="overflow-hidden gap-6 flex flex-nowrap w-full max-w-full "
+        className="flex overflow-hidden gap-4"
         id="list"
         style={{ scrollBehavior: "smooth" }}
       >
         {characters.map((character) => (
           <li
             key={character.character.mal_id}
-            className="rounded-lg flex-shrink-0 h-48  hover:scale-110  z-20 duration-200 relative"
+            className="rounded-lg flex-shrink-0 h-48  hover:scale-110  duration-200 relative"
             data-hidden="1"
           >
             <img
@@ -54,10 +54,14 @@ const Characters = ({ id }: CharactersProps) => {
               className="rounded-lg w-fit h-full object-cover  -z-10"
               alt={`Imagen de ${character.character.name}`}
             />
-            <div className="absolute inset-0 hover:z-30  bg-gradient-to-b w-full h-full from-slate-900 to-transparent duration-200  rounded-xl text-white text-[11px] p-3">
+            <div className="absolute inset-0 hover:z-30 flex justify-end flex-col bg-gradient-to-b w-full h-full from-transparent to-slate-900 duration-200  rounded-xl text-white text-[11px] p-3 ">
               <div className="flex justify-between">
                 <span className="text-white ">{character.character.name}</span>
-                <span> {"<3"} {character.favorites}</span>
+                <span className="inline-flex gap-0.5 justify-center">
+                <Icon icon="solar:heart-linear" width="14" height="14" />
+                  {" "}
+                   {character.favorites}
+                </span>
               </div>
             </div>
           </li>
@@ -91,8 +95,11 @@ function Manga() {
       .replace(/\s+/g, "-") // Reemplaza espacios por guiones
       .replace(/[^\w\-]+/g, ""); // Elimina caracteres especiales
   }
-  const handleCLickNavigate = (id: number | undefined, name: string | null | undefined) => {
-    if(id && name){
+  const handleCLickNavigate = (
+    id: number | undefined,
+    name: string | null | undefined
+  ) => {
+    if (id && name) {
       navigate(`/anime/${id}/:${formatToSlug(name)}/play`);
     }
   };
@@ -119,23 +126,49 @@ function Manga() {
           />
         </div>
       </div>
-      <div className="px-5 md:p-10 md:mt-52 grid grid-cols-1 gap-6">
-        <h3 className="font-semibold text-7xl bg-gradient-to-br from-slate-900 to-zinc-500 bg-clip-text text-transparent">
+      <div className="px-5 md:p-10 md:mt-52 grid grid-cols-1 gap-3">
+        <h3 className="font-semibold text-3xl md:text-5xl bg-gradient-to-br from-slate-900 to-zinc-500 bg-clip-text text-transparent">
           {anime?.title}
         </h3>
-        <ul className="flex gap-3">
-          {anime?.genres.map((gen) => (
-            <li className="badge" key={gen.mal_id}>
-              {gen.name}
-            </li>
-          ))}
-        </ul>
-
+        <div className="flex gap-3 items-center font-medium text-[13px]">
+          <div className="flex gap-0.5 items-center">
+            <Icon icon="solar:sort-by-time-linear" width="13" height="13" />
+            <p>{anime?.duration}</p>
+          </div>
+          <div className="flex justify-center items-center gap-0.5">
+            <Icon icon="tabler:device-tv" width="13" height="13" />
+            <p>{anime?.type}</p>
+          </div>
+          <div>
+            <p>{anime?.episodes}</p>
+          </div>
+          <div>
+            <p>{anime?.favorites} </p>
+          </div>
+          <div className="flex items-center gap-0.5">
+            <Icon icon="solar:ranking-linear" width="13" height="13" />
+            <p>{anime?.rank}</p>
+          </div>
+          <div className="flex items-center gap-0.5">
+            <Icon icon="solar:star-linear" width="13" height="13" />
+            <p>{anime?.score}</p>
+          </div>
+        </div>
         <div>
+        <div className=" flex flex-auto flex-col gap-1 mb-4">
+          {/* <h3 className="font-semibold">Generos</h3> */}
+          <ul className="flex gap-3">
+            {anime?.genres.map((gen) => (
+              <li className="badge" key={gen.mal_id}>
+                {gen.name}
+              </li>
+            ))}
+          </ul>
+        </div>
           <button
-            className="btn btn-wide my-2 "
+            className="btn btn-wide"
             onClick={() => {
-              handleCLickNavigate(anime?.mal_id,anime?.title);
+              handleCLickNavigate(anime?.mal_id, anime?.title);
             }}
           >
             {" "}
@@ -143,11 +176,11 @@ function Manga() {
             Play
           </button>
         </div>
-        {/* // Stats y  datos */}
         
+
         <div className="grid md:grid-cols-2 xl:grid-cols-2 md:divide-x gap-5">
           <div className="border-gray-100 pr-6 ">
-            <h3 className="font-medium">Sypnosis</h3>
+            <h3 className="font-semibold">Sypnosis</h3>
             <p className="font-light mt-2 text-pretty">{anime?.synopsis}</p>
             <button className="bradge ">{anime?.rank}</button>
           </div>
@@ -157,13 +190,17 @@ function Manga() {
               <iframe
                 title={anime?.title_japanese}
                 className="rounded-xl w-full md:w-[80%] lg:w-[80%] h-[350px]"
-                src={anime?.trailer.embed_url === null || undefined || "" ? "https://www.youtube.com/embed/U90cfBuZSJU?enablejsapi=1" : anime?.trailer.embed_url}
+                src={
+                  anime?.trailer.embed_url === null || undefined || ""
+                    ? "https://www.youtube.com/embed/U90cfBuZSJU?enablejsapi=1"
+                    : anime?.trailer.embed_url
+                }
                 id="trailer"
               ></iframe>
             </div>
           </div>
         </div>
-        
+
         <div>
           {" "}
           <Characters id={id}></Characters>
