@@ -11,7 +11,7 @@ export default function ViewAnime() {
 //       .replace(/[^\w\-]+/g, ""); // Elimina caracteres especiales
 //   }
   const [data, setData] = useState<Array<Chapters>>([]);
-  const [chapter, setChapter] = useState<number>(0);
+  const [chapter, setChapter] = useState<number>(1);
   const { id, name } = useParams();
 
 
@@ -27,7 +27,7 @@ export default function ViewAnime() {
       <div className="bg-black w-full h-screen">
         <iframe
           className="w-full h-screen"
-          src={`https://vidsrc.cc/v2/embed/anime/${id}/${chapter}/sub`}
+          src={`https://vidsrc.cc/v2/embed/anime/ani${id}/${chapter}/sub`}
           frameBorder="0"
           allowFullScreen
         ></iframe>

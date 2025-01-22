@@ -58,9 +58,8 @@ const Characters = ({ id }: CharactersProps) => {
               <div className="flex justify-between">
                 <span className="text-white ">{character.character.name}</span>
                 <span className="inline-flex gap-0.5 justify-center">
-                <Icon icon="solar:heart-linear" width="14" height="14" />
-                  {" "}
-                   {character.favorites}
+                  <Icon icon="solar:heart-linear" width="14" height="14" />{" "}
+                  {character.favorites}
                 </span>
               </div>
             </div>
@@ -119,11 +118,17 @@ function Manga() {
       <div className="w-full h-[30vh] bg-gradient-to-b  bg-stone-950 rounded-md"></div>
       <div className="p-10 rounded-lg top-48 md:absolute w-full z-0 ">
         <div className=" w-64">
-          <img
+          <img onClick={() => document.getElementById("my_modal_2").showModal()}
             src={anime?.images.jpg.large_image_url}
             alt=""
             className="rounded-2xl shadow-md w-full h-full"
           />
+          <dialog id="my_modal_2" className="modal">
+            <div className="modal-box">
+              <h3 className="font-bold text-center text-2xl">{anime?.title}</h3>
+              <img src={anime?.images.jpg.large_image_url} alt={`Imagen de ${anime?.title}`} />
+            </div>
+          </dialog>
         </div>
       </div>
       <div className="px-5 md:p-10 md:mt-52 grid grid-cols-1 gap-3">
@@ -155,16 +160,16 @@ function Manga() {
           </div>
         </div>
         <div>
-        <div className=" flex flex-auto flex-col gap-1 mb-4">
-          {/* <h3 className="font-semibold">Generos</h3> */}
-          <ul className="flex gap-3">
-            {anime?.genres.map((gen) => (
-              <li className="badge" key={gen.mal_id}>
-                {gen.name}
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div className=" flex flex-auto flex-col gap-1 mb-4">
+            {/* <h3 className="font-semibold">Generos</h3> */}
+            <ul className="flex gap-3">
+              {anime?.genres.map((gen) => (
+                <li className="badge" key={gen.mal_id}>
+                  {gen.name}
+                </li>
+              ))}
+            </ul>
+          </div>
           <button
             className="btn btn-wide"
             onClick={() => {
@@ -176,7 +181,6 @@ function Manga() {
             Play
           </button>
         </div>
-        
 
         <div className="grid md:grid-cols-2 xl:grid-cols-2 md:divide-x gap-5">
           <div className="border-gray-100 pr-6 ">
