@@ -118,7 +118,9 @@ function Manga() {
       <div className="w-full h-[30vh] bg-gradient-to-b  bg-stone-950 rounded-md"></div>
       <div className="p-10 rounded-lg top-48 md:absolute w-full z-0 ">
         <div className=" w-64">
-          <img onClick={() => document.getElementById("my_modal_2").showModal()}
+          <img onClick={() => {
+            console.log("dsfjsjfh")
+          }}
             src={anime?.images.jpg.large_image_url}
             alt=""
             className="rounded-2xl shadow-md w-full h-full"
