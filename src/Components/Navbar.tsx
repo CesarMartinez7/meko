@@ -26,7 +26,7 @@ export default function Navbar() {
               <input
                 ref={inputRef}
                 type="text"
-                placeholder="Pluto, Naruto, etc."
+                placeholder="Pluto, Monster, etc..."
                 className="input input-sm input-bordered w-16 placeholder-current md:w-auto"
               />
             </form>
