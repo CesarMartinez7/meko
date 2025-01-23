@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Chapters } from "../Types/Chapter";
 
-interface PropsParams extends Record<string, string | undefined> {
-  id: string ;
-  name: string ;
-  caps: string ;
+interface PropsParams extends Record<string,string | undefined> {
+  id: string;
+  name: string;
+  caps: string;
 }
 
 export default function ViewAnime() {
