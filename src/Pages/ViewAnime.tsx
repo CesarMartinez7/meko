@@ -12,7 +12,6 @@ export default function ViewAnime() {
   const [data, setData] = useState<Array<Chapters>>([]);
   const [chapter, setChapter] = useState<number>(1);
   const [isDub, setIsDub] = useState(true);
-  const [limit, setLimit] = useState(0);
   const { id, name, caps } = useParams<PropsParams>();
 
 
@@ -24,7 +23,6 @@ export default function ViewAnime() {
     fetch(url)
       .then((response) => response.json())
       .then((datae) => {
-        setLimit(datae.pagination);
         setData(datae.data);
       })
       .catch((err) => console.log(err));
