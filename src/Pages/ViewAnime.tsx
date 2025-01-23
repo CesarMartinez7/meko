@@ -24,7 +24,7 @@ export default function ViewAnime() {
           allowFullScreen
         ></iframe>
       </div>
-      <div className="p-5 lg:p-12">
+      <div className="p-5 lg:p-12 h-screen overflow-y-auto">
         <section>
           <h3 className="font-bold text-3xl bg-gradient-to-br from-slate-900 to-zinc-500 bg-clip-text text-transparent">
             {name?.toUpperCase().slice(1, name?.length)}
