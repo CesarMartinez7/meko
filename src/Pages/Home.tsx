@@ -10,6 +10,8 @@ export default function HomePage() {
       <Grid url={"https://api.jikan.moe/v4/seasons/now?sfw"} text="Populares"></Grid>
       <Grid url={"https://api.jikan.moe/v4/top/anime?sfw"} text="Top anime"></Grid>
       <Grid url={"https://api.jikan.moe/v4/top/anime?type=ona"} text="Top Ova"></Grid>
+      <Grid url={"https://api.jikan.moe/v4/seasons/upcoming"} text="Upcoming"></Grid>
+
     </div>
   );
 }

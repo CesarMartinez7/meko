@@ -9,14 +9,30 @@ export default function Carrusel() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://api.jikan.moe/v4/top/anime?type=movie")
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchAnimes = async () => {
+      setLoading(true);  
+      try {
+        const response = await fetch("https://api.jikan.moe/v4/top/anime?type=movie");
+        
+        if (!response.ok) {
+          throw new Error("Error en la petición");
+        }
+  
+        const data = await response.json();
         setAnimes(data.data);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
+      } catch (err) {
+        console.error("Error al obtener los animes:", err);
+      } finally {
+        setLoading(false);  
+      }
+    };
+  
+    fetchAnimes();
   }, []);
+  
+
+
+
 
   const handleNext = () => {
     setIndex((prevIndex) => (prevIndex + 1) % animes.length);
