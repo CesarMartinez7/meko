@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { QueryContext } from "../App";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 export default function Navbar() {
   const inputRef = useRef<HTMLInputElement>(null);
   const toSearchNavigate = useNavigate();
-  const { setQuery } = useContext(QueryContext);
+  const { setQuery,setTheme,theme } = useContext(QueryContext);
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     setQuery(inputRef?.current?.value || "");
@@ -40,7 +40,10 @@ export default function Navbar() {
               <input
                 type="checkbox"
                 className="theme-controller"
-                value="dark"
+                value={theme === "dark" ? "light" : "dark"}
+                onClick={(): any => {
+                  setTheme(theme === "dark" ? "light" : "dark");
+                }}
               />
 
               {/* sun icon */}
