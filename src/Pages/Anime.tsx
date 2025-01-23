@@ -115,7 +115,7 @@ function Manga() {
         if(response.ok){
           return response.json()
         }else{
-          window.alert("Cargando anime")
+          
           setIsLoading(true)
         }
         return response.json()})

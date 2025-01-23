@@ -19,7 +19,7 @@ export default function ViewAnime() {
     <div className="md:h-screen w-full grid grid-cols-1 md:grid-cols-2">
       <div className="bg-black w-full md:h-screen">
         <iframe
-          className="w-full md:h-screen"
+          className="w-full h-[350px] md:h-screen"
           src={`https://vidsrc.cc/v2/embed/anime/ani${id}/${chapter}/${
             isDub ? "dub" : "sub"
           }`}
