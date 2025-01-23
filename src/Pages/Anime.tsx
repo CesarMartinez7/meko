@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { Anime } from "../Types/Anime";
 import { Character } from "../Types/Character";
+import Loading from "../Components/Loding";
 
 // Import Swiper styles
 
@@ -13,6 +14,7 @@ interface CharactersProps {
 const Characters = ({ id }: CharactersProps) => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const url = `https://api.jikan.moe/v4/anime/${id}/characters`;
+  const [isLoading,setIsLoading] = useState(true)
 
   useEffect(() => {
     fetch(url)
@@ -87,6 +89,7 @@ const Characters = ({ id }: CharactersProps) => {
 };
 
 function Manga() {
+  const [isLoading,setIsLoading] = useState<boolean>(false)
   function formatToSlug(text: string) {
     return text
       .toLowerCase() // Convierte a minúsculas
@@ -108,11 +111,23 @@ function Manga() {
   const endPoint = `https://api.jikan.moe/v4/anime/${id}/full`;
   useEffect(() => {
     fetch(endPoint)
-      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        if(response.ok){
+          return response.json()
+        }else{
+          window.alert("Cargando anime")
+          setIsLoading(true)
+        }
+        return response.json()})
       .then((dataa) => {
         setAnime(dataa.data);
       });
   }, [id]);
+
+  if(isLoading){
+    <Loading/>
+  }
   return (
     <div className="mt-auto lg:p-7">
       <div className="hidden md:block w-full h-[30vh] bg-gradient-to-b  bg-stone-950  "></div>
