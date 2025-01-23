@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 export default function Navbar() {
   const inputRef = useRef<HTMLInputElement>(null);
   const toSearchNavigate = useNavigate();
-  const { setQuery,setTheme,theme } = useContext(QueryContext);
+  const { setQuery, setTheme, theme } = useContext(QueryContext);
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     setQuery(inputRef?.current?.value || "");
@@ -16,10 +16,7 @@ export default function Navbar() {
     <div className="px-3 sticky top-1 z-40 shadow-md ">
       <div className="navbar bg-base-100 glassMorf  shadow-lg">
         <div className="flex-1">
-          <a
-            className="btn btn-ghost text-xl  "
-            href="/"
-          >
+          <a className="btn btn-ghost text-xl  " href="/">
             animepy
           </a>
         </div>
@@ -35,11 +32,11 @@ export default function Navbar() {
             </form>
           </div>
           <div>
-            <label className="swap swap-rotate">
+            <label className="swap swap-rotate btn btn-ghost">
               {/* this hidden checkbox controls the state */}
               <input
                 type="checkbox"
-                className="theme-controller"
+                className="theme-controller "
                 value={theme === "dark" ? "light" : "dark"}
                 onClick={(): any => {
                   setTheme(theme === "dark" ? "light" : "dark");
@@ -66,11 +63,11 @@ export default function Navbar() {
             </label>
           </div>
           <div className="dropdown dropdown-end">
-            <button 
-            type="button"
+            <button
+              type="button"
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar"
+              className="btn btn-ghost btn-circle "
             >
               <Icon icon="tabler:user" width="24" height="24" />
             </button>

@@ -41,7 +41,6 @@ const Characters = ({ id }: CharactersProps) => {
       <h3 className="font-semibold mb-2">Casting</h3>
       <ul
         className="flex overflow-hidden gap-4"
-        id="list"
         style={{ scrollBehavior: "smooth" }}
       >
         {characters.map((character) => (
@@ -198,7 +197,7 @@ function Manga() {
           </button>
         </div>
 
-        <div className="grid md:grid-cols-2 xl:grid-cols-2 md:divide-x gap-5">
+        <div className="grid md:grid-cols-2 xl:grid-cols-2 md:divide-x divide-base-200 gap-5">
           <div className="border-gray-100 pr-6 ">
             <h3 className="font-semibold">Sypnosis</h3>
             <p className="font-light mt-2 text-pretty">{anime?.synopsis}</p>
