@@ -13,8 +13,8 @@ export default function Navbar() {
     toSearchNavigate("/search");
   };
   return (
-    <div className="px-3 sticky top-1 z-40 shadow-md ">
-      <div className="navbar bg-base-100 glassMorf  shadow-lg">
+    <div className="px-3 sticky top-1 z-40  ">
+      <div className="navbar bg-base-100 glassMorf shadow-2xl borded  ">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl  " href="/">
             animepy
@@ -26,8 +26,8 @@ export default function Navbar() {
               <input
                 ref={inputRef}
                 type="text"
-                placeholder="Search"
-                className="input input-sm input-bordered w-16 md:w-auto"
+                placeholder="Pluto, Naruto, etc."
+                className="input input-sm input-bordered w-16 placeholder-current md:w-auto"
               />
             </form>
           </div>

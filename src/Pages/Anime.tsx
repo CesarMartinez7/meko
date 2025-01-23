@@ -40,18 +40,19 @@ const Characters = ({ id }: CharactersProps) => {
     <div className="mt-12">
       <h3 className="font-semibold mb-2">Casting</h3>
       <ul
+      id="list"
         className="flex overflow-hidden gap-4"
         style={{ scrollBehavior: "smooth" }}
       >
         {characters.map((character) => (
           <li
             key={character.character.mal_id}
-            className=" flex-shrink-0 h-48   hover:scale-110 z-40  duration-200 relative"
+            className="rounded-lg flex-shrink-0 h-48  hover:scale-110  duration-200 relative"
             data-hidden="1"
           >
             <img
               src={character.character.images.jpg.image_url}
-              className=" w-fit h-full object-cover "
+              className="rounded-lg w-fit h-full object-cover  -z-10"
               alt={`Imagen de ${character.character.name}`}
             />
             <div className="absolute inset-0 hover:z-30 flex justify-end flex-col bg-gradient-to-b w-full h-full from-transparent to-base-100 duration-200    text-[11px] p-3 ">
