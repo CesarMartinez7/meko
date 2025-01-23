@@ -15,16 +15,16 @@ export default function ViewAnime() {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div className="h-screen w-full grid grid-cols-1 md:grid-cols-2">
-      <div className="bg-black w-full h-screen">
+    <div className="md:h-screen w-full grid grid-cols-1 md:grid-cols-2">
+      <div className="bg-black w-full md:h-screen">
         <iframe
-          className="w-full h-screen"
+          className="w-full md:h-screen"
           src={`https://vidsrc.cc/v2/embed/anime/ani${id}/${chapter}/sub`}
           frameBorder="0"
           allowFullScreen
         ></iframe>
       </div>
-      <div className="p-12">
+      <div className="p-5 lg:p-12">
         <section>
           <h3 className="font-bold text-3xl bg-gradient-to-br from-slate-900 to-zinc-500 bg-clip-text text-transparent">
             {name?.toUpperCase().slice(1, name?.length)}
