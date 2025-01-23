@@ -88,19 +88,12 @@ const Characters = ({ id }: CharactersProps) => {
 
 function Manga() {
   const [isLoading,setIsLoading] = useState<boolean>(false)
-  function formatToSlug(text: string) {
-    return text
-      .toLowerCase() // Convierte a minúsculas
-      .trim() // Elimina espacios en los extremos
-      .replace(/\s+/g, "-") // Reemplaza espacios por guiones
-      .replace(/[^\w\-]+/g, ""); // Elimina caracteres especiales
-  }
   const handleCLickNavigate = (
     id: number | undefined,
     name: string | null | undefined
   ) => {
     if (id && name) {
-      navigate(`/anime/${id}/:${formatToSlug(name)}/play`);
+      navigate(`/anime/${id}/${name}/${anime?.episodes}/play`);
     }
   };
   const navigate = useNavigate();

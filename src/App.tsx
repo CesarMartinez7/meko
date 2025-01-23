@@ -45,7 +45,7 @@ function App() {
               <Route path="/" element={<HomePage></HomePage>}></Route>
               <Route path="/anime/:id" element={<Manga></Manga>}></Route>
               <Route
-                path="/anime/:id/:name/play"
+                path="/anime/:id/:name/:caps/play"
                 element={<ViewAnime />}
               ></Route>
               <Route
