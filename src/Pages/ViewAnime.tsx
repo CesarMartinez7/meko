@@ -6,13 +6,17 @@ export default function ViewAnime() {
   const [data, setData] = useState<Array<Chapters>>([]);
   const [chapter, setChapter] = useState<number>(1);
   const [isDub, setIsDub] = useState(true);
+  const [limit, setLimit] = useState(0);
   const { id, name } = useParams();
 
   useEffect(() => {
     const url = `https://api.jikan.moe/v4/anime/${id}/episodes`;
     fetch(url)
       .then((response) => response.json())
-      .then((datae) => setData(datae.data))
+      .then((datae) => {
+        setLimit(datae.pagination.last_visible_page);
+        console.log(limit)
+        setData(datae.data)})
       .catch((err) => console.log(err));
   }, []);
   return (
