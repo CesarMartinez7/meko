@@ -24,9 +24,7 @@ export default function ViewAnime() {
     fetch(url)
       .then((response) => response.json())
       .then((datae) => {
-        console.log("aqui");
         setLimit(datae.pagination);
-        console.log(limit);
         setData(datae.data);
       })
       .catch((err) => console.log(err));
