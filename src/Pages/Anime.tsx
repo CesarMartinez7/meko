@@ -115,7 +115,7 @@ function Manga() {
   }, [id]);
   return (
     <div className="mt-auto lg:p-7">
-      <div className="w-full h-[30vh] bg-gradient-to-b  bg-stone-950 rounded-md"></div>
+      <div className="hidden md:block w-full h-[30vh] bg-gradient-to-b  bg-stone-950  "></div>
       <div className="p-10 rounded-lg top-48 md:absolute w-full z-0 ">
         <div className=" w-64">
           <img onClick={() => {
@@ -134,7 +134,7 @@ function Manga() {
         </div>
       </div>
       <div className="px-5 md:p-10 md:mt-52 grid grid-cols-1 gap-3">
-        <h3 className="font-semibold text-3xl md:text-5xl bg-gradient-to-br from-slate-900 to-zinc-500 bg-clip-text text-transparent">
+        <h3 className="font-semibold text-3xl md:text-5xl">
           {anime?.title}
         </h3>
         <div className="flex gap-3 items-center font-medium text-[13px]">
@@ -173,7 +173,7 @@ function Manga() {
             </ul>
           </div>
           <button
-            className="btn btn-wide"
+            className="btn btn-wide font-bold"
             onClick={() => {
               handleCLickNavigate(anime?.mal_id, anime?.title);
             }}

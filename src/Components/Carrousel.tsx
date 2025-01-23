@@ -52,16 +52,16 @@ export default function Carrusel() {
                   alt={anime.title}
                   className="w-full h-screen object-cover blur-sm"
                 />
-                <div className="absolute p-6  md:p-12 inset-0 bg-gradient-to-t text-white from-black/100 to-transparent xl:p-20 flex flex-col justify-end gap-4">
-                  <h2 className="text-white text-4xl font-medium">
+                <div className="absolute p-6  md:p-12 inset-0 bg-gradient-to-t from-black/100 to-transparent xl:p-20 flex flex-col justify-end gap-4">
+                  <h2 className=" text-4xl font-medium">
                     {anime.title}
                   </h2>
-                  <p className="text-white font-light">{anime.background}</p>
+                  <p className="font-light">{anime.background}</p>
                   <div className="inline-flex gap-3 font-light text-[13px]">
                     <p>{anime.duration}</p>
                     
                     <div className="flex gap-1 items-center justify-center"><span><Icon icon="solar:star-linear" width="13" height="13" /></span>{anime.score}</div>
-                    <p className="text-white">{new Date().getFullYear()}</p>
+                    <p className="">{new Date().getFullYear()}</p>
                   </div>
                   <div className="flex gap-4">
                     <button type="button" className="btn">

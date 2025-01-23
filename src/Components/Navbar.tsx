@@ -13,11 +13,11 @@ export default function Navbar() {
     toSearchNavigate("/search");
   };
   return (
-    <div className="px-3 sticky top-1 z-40 ">
+    <div className="px-3 sticky top-1 z-40 shadow-md ">
       <div className="navbar bg-base-100 glassMorf  shadow-lg">
         <div className="flex-1">
           <a
-            className="btn btn-ghost text-xl bg-gradient-to-br from-slate-900 to-zinc-500 bg-clip-text text-transparent"
+            className="btn btn-ghost text-xl  "
             href="/"
           >
             animepy
@@ -40,7 +40,7 @@ export default function Navbar() {
               <input
                 type="checkbox"
                 className="theme-controller"
-                value="synthwave"
+                value="dark"
               />
 
               {/* sun icon */}
