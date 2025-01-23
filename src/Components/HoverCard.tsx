@@ -26,7 +26,7 @@ export default function HoverCard({item}: HoverCardProps) {
         className="w-full h-full z-0 transition-transform duration-300 ease-in-out group-hover:scale-110 object-cover max-w-full max-h-full rounded-2xl"
       />
       <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/100 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div className="p-4 text-white">
+        <div className="p-4 ">
           <h3 className="text-sm md:text-md font-semibold mb-2">
             {item?.title}
           </h3>

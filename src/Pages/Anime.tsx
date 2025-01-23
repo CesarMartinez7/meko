@@ -14,7 +14,6 @@ interface CharactersProps {
 const Characters = ({ id }: CharactersProps) => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const url = `https://api.jikan.moe/v4/anime/${id}/characters`;
-  const [isLoading,setIsLoading] = useState(true)
 
   useEffect(() => {
     fetch(url)
@@ -56,9 +55,9 @@ const Characters = ({ id }: CharactersProps) => {
               className="rounded-lg w-fit h-full object-cover  -z-10"
               alt={`Imagen de ${character.character.name}`}
             />
-            <div className="absolute inset-0 hover:z-30 flex justify-end flex-col bg-gradient-to-b w-full h-full from-transparent to-slate-900 duration-200  rounded-xl text-white text-[11px] p-3 ">
+            <div className="absolute inset-0 hover:z-30 flex justify-end flex-col bg-gradient-to-b w-full h-full from-transparent to-slate-900 duration-200  rounded-xl  text-[11px] p-3 ">
               <div className="flex justify-between">
-                <span className="text-white ">{character.character.name}</span>
+                <span className=" ">{character.character.name}</span>
                 <span className="inline-flex gap-0.5 justify-center">
                   <Icon icon="solar:heart-linear" width="14" height="14" />{" "}
                   {character.favorites}
