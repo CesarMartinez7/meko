@@ -1,13 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, createContext, Suspense, useEffect } from "react";
-import "./App.css";
 import allLazy from "./Routers/lazy";
 import Navbar from "./Components/Navbar";
-import HomePage from "./Pages/Home";
 import Loading from "./Components/Loding";
-const { Search, Manga, ViewAnime } = allLazy;
+const { Search, Anime, ViewAnime,Home } = allLazy;
 import Footer from "./Components/Footer";
-import Carrusel from "./Components/Carrousel";
+import "./App.css";
+
+
 
 interface QueryContextType {
   query: string;
@@ -40,10 +40,8 @@ function App() {
           <BrowserRouter>
             <Navbar></Navbar>
             <Routes>
-              <Route path="/carrusel" element={<Carrusel></Carrusel>}></Route>
-              <Route path="/loading" element={<Loading></Loading>}></Route>
-              <Route path="/" element={<HomePage></HomePage>}></Route>
-              <Route path="/anime/:id" element={<Manga></Manga>}></Route>
+              <Route path="/" element={<Home/>}></Route>
+              <Route path="/anime/:id" element={<Anime/>}></Route>
               <Route
                 path="/anime/:id/:name/:caps/play"
                 element={<ViewAnime />}
