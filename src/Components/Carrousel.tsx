@@ -2,17 +2,18 @@ import { useState, useEffect, memo} from "react";
 import { Anime } from "../Types/Anime";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Loading from "./Loding";
+import { useNavigate } from "react-router-dom";
 
 function Carrusel() {
   const [animes, setAnimes] = useState<Anime[]>([]);
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-
+  const navigate = useNavigate()
   useEffect(() => {
     const fetchAnimes = async () => {
       setLoading(true);  
       try {
-        const response = await fetch("https://api.jikan.moe/v4/top/anime?type=movie");
+        const response = await fetch("https://api.jikan.moe/v4/top/anime?sfw");
         
         if (!response.ok) {
           throw new Error("Error en la petición");
@@ -58,7 +59,7 @@ function Carrusel() {
           {animes &&
             animes.map((anime, i) => (
               <div
-                className={`flex flex-col relative items-center justify-center w-full flex-shrink-0  ${
+                className={`flex flex-col relative items-center justify-center w-full flex-shrink-0  transition-all ${
                   i === index ? "block" : "hidden"
                 }`}
                 key={anime.mal_id}
@@ -79,12 +80,14 @@ function Carrusel() {
                     <div className="flex gap-1 items-center justify-center"><span><Icon icon="solar:star-linear" width="13" height="13" /></span>{anime.score}</div>
                     <p className="">{new Date().getFullYear()}</p>
                   </div>
-                  <div className="flex gap-4">
-                    <button type="button" className="btn">
+                  <div className="flex gap-4 z-30">
+                    <button type="button" className="btn" onClick={() => {
+                      navigate(`/anime/${anime.mal_id}/${anime.title}/${anime.episodes}/play`)
+                    }}>
                     <Icon icon="solar:play-linear" width="16" height="16" />
                       Ver Ahora
                     </button>
-                    <button type="button" className="btn">
+                    <button type="button" className="btn glass">
                     <Icon icon="solar:heart-linear" width="16" height="16" />
                       Añadir a favoritos
                     </button>
