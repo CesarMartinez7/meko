@@ -1,5 +1,5 @@
 import { Anime } from "../Types/Anime";
-import { useState, useEffect, useContext,memo,useCallback} from "react";
+import { useState, useEffect, useContext,memo} from "react";
 import { QueryContext } from "../App";
 import HoverCard from "./HoverCard";
 import Loading from "./Loding";
@@ -14,16 +14,11 @@ function Grid({ url, text = "Tus resultados" }: GridProps) {
   const { query } = useContext(QueryContext);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<Anime[]>([]);
-  const [error, setError] = useState<string | null>(null);
 
   // Construcción de URL dinámica
   const searchUrl = url.length === 0 ? `https://api.jikan.moe/v4/anime?q=${query}` : url;
-
-  const memoizedFetch = useCallback(async () => {
-
+  const memoizedFetch = async () => {
       setLoading(true);
-      setError(null);
-
       try {
         const response = await fetch(searchUrl);
 
@@ -34,19 +29,18 @@ function Grid({ url, text = "Tus resultados" }: GridProps) {
         const result = await response.json();
         setData(result.data);
       } catch (err) {
-        setError("Hubo un problema al cargar los datos. Intenta de nuevo.");
+        console.log("Hubo un error al capturar the data")
       } finally {
         setLoading(false);
       }
 
-  },[query, searchUrl]);
+  }
   
   useEffect(() => {
     memoizedFetch();
-  }, [memoizedFetch]); // Dependencia única para evitar llamadas innecesarias
+  }, [query,searchUrl]); // Dependencia única para evitar llamadas innecesarias
 
   if (loading) return <Loading />;
-  if (error) return <div className="w-full h-screen min-h-svh grid place-content-center"><p className="text-red-500">{error}</p>;</div>
   if (data.length === 0) return <div className="w-full h-screen grid place-content-center">
     <img src={LogoPage} alt="" />
     <p className="font-semibold text-2xl text-center">No se encontraron resultados</p>
