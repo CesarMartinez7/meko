@@ -46,7 +46,7 @@ function Grid({ url, text = "Tus resultados" }: GridProps) {
   }, [memoizedFetch]); // Dependencia única para evitar llamadas innecesarias
 
   if (loading) return <Loading />;
-  if (error) return <p className="text-red-500">{error}</p>;
+  if (error) return <div className="w-full h-screen min-h-svh grid place-content-center"><p className="text-red-500">{error}</p>;</div>
   if (data.length === 0) return <div className="w-full h-screen grid place-content-center">
     <img src={LogoPage} alt="" />
     <p className="font-semibold text-2xl text-center">No se encontraron resultados</p>
