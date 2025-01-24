@@ -199,7 +199,7 @@ function Manga() {
           <div className="flex flex-col  justify-center w-full h-full">
             <h3 className="font-medium text-xl text-center ">Trailer</h3>
             <div className="w-full h-full flex flex-col justify-center items-center mt">
-              <iframe
+              <embed
                 title={anime?.title_japanese}
                 className="rounded-xl w-full md:w-[80%] lg:w-[80%] h-[350px]"
                 src={
@@ -208,7 +208,7 @@ function Manga() {
                     : anime?.trailer.embed_url
                 }
                 id="trailer"
-              ></iframe>
+              ></embed>
             </div>
           </div>
         </div>

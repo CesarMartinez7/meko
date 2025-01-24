@@ -30,14 +30,14 @@ export default function ViewAnime() {
   return (
     <div className="md:h-screen w-full grid grid-cols-1 md:grid-cols-2">
       <div className="bg-black w-full md:h-screen">
-        <iframe
+        <embed
           className="w-full h-[350px] md:h-screen"
           src={`https://vidsrc.cc/v2/embed/anime/ani${numericId}/${chapter}/${
             isDub ? "dub" : "sub"
           }`}
           frameBorder="0"
           allowFullScreen
-        ></iframe>
+        ></embed>
       </div>
       <div className="p-5 lg:p-12 h-screen overflow-y-auto">
         <section>
