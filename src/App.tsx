@@ -37,7 +37,7 @@ function App() {
 
   });
   return (
-    <div className="flex flex-col">
+    <div className="gridiConte">
       <Suspense fallback={<Loading />}>
         <QueryContext.Provider value={{ query, setQuery, setTheme, theme }}>
           <BrowserRouter>

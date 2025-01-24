@@ -43,7 +43,7 @@ function Grid({ url, text = "Tus resultados" }: GridProps) {
   if (loading) return <Loading />;
   if (data.length === 0) return <div className="w-full h-screen grid place-content-center">
     <img src={LogoPage} alt="" />
-    <p className="font-semibold text-2xl text-center">No se encontraron resultados</p>
+    <p className="font-semibold text-xl text-center">No se encontraron resultados, o por favor vuelva a buscar.</p>
   </div>;
 
   return (
