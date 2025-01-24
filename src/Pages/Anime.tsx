@@ -41,7 +41,7 @@ const Characters = ({ id }: CharactersProps) => {
       <h3 className="font-semibold mb-2">Casting</h3>
       <ul
       id="list"
-        className="flex overflow-hidden gap-4"
+        className="flex overflow-hidden gap-4 rounded-lg"
         style={{ scrollBehavior: "smooth" }}
       >
         {characters.map((character) => (
@@ -144,18 +144,20 @@ function Manga() {
           {anime?.title}
         </h3>
         <div className="flex gap-3 items-center font-medium text-[13px]">
-          <div className="flex gap-0.5 items-center">
-            <Icon icon="solar:sort-by-time-linear" width="13" height="13" />
+          <div className="flex gap-0.5 items-center justify-center">
+            <Icon icon="tabler:clock" width="13" height="13" />
             <p>{anime?.duration}</p>
           </div>
           <div className="flex justify-center items-center gap-0.5">
             <Icon icon="tabler:device-tv" width="13" height="13" />
             <p>{anime?.type}</p>
           </div>
-          <div>
+          <div className="inline-flex gap-0.5">
+            Ep:
             <p>{anime?.episodes}</p>
           </div>
-          <div>
+          <div className="flex items-center gap-x-1 justify-center">
+          <Icon icon="solar:heart-outline" width="13" height="13" />
             <p>{anime?.favorites} </p>
           </div>
           <div className="flex items-center gap-0.5">
