@@ -18,7 +18,7 @@ interface QueryContextType {
 
 const defaultValue: QueryContextType = {
   query: "",
-  theme: "dark",
+  theme: "luxury",
   setQuery: function () {},
   setTheme: function () {},
 };
@@ -28,10 +28,13 @@ export const QueryContext = createContext<QueryContextType>(defaultValue);
 function App() {
   const [query, setQuery] = useState("");
 
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "luxury");
 
   useEffect(() => {
-    localStorage.setItem("theme", theme);
+    localStorage.setItem("theme", theme)
+    const html = document.querySelector("html") as HTMLElement;
+    console.log(html.setAttribute("data-theme", theme));
+
   });
   return (
     <div className="flex flex-col">

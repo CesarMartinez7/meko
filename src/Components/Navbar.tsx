@@ -27,19 +27,19 @@ export default function Navbar() {
                 ref={inputRef}
                 type="text"
                 placeholder="Pluto, Monster, etc..."
-                className="input input-sm input-bordered w-16 placeholder-current md:w-auto"
+                className="input input-sm input-bordered  placeholder-current "
               />
             </form>
           </div>
           <div>
-            <label className="swap swap-rotate btn btn-ghost">
+            <label className="md:swap swap-rotate btn btn-ghost hidden ">
               {/* this hidden checkbox controls the state */}
               <input
                 type="checkbox"
                 className="theme-controller "
-                value={theme === "dark" ? "light" : "dark"}
+                value={theme}
                 onClick={(): any => {
-                  setTheme(theme === "dark" ? "light" : "dark");
+                  setTheme(theme === "luxury" ? "dark" : "luxury");
                 }}
               />
 

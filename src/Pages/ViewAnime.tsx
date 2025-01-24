@@ -35,8 +35,6 @@ export default function ViewAnime() {
           src={`https://vidsrc.cc/v2/embed/anime/ani${numericId}/${chapter}/${
             isDub ? "dub" : "sub"
           }`}
-          frameBorder="0"
-          allowFullScreen
         ></embed>
       </div>
       <div className="p-5 lg:p-12 h-screen overflow-y-auto">
