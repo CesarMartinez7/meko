@@ -52,7 +52,7 @@ const Characters = ({ id }: CharactersProps) => {
           >
             <img
               src={character.character.images.jpg.image_url}
-              className="rounded-lg w-fit h-full object-cover  -z-10"
+              className="rounded-lg w-fit max-w-[130px] h-full object-cover  -z-10"
               alt={`Imagen de ${character.character.name}`}
             />
             <div className="absolute inset-0 hover:z-30 flex justify-end flex-col bg-gradient-to-b w-full h-full from-transparent to-base-100 duration-200    text-[11px] p-3 ">

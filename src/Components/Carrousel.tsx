@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo} from "react";
 import { Anime } from "../Types/Anime";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Loading from "./Loding";
 
-export default function Carrusel() {
+function Carrusel() {
   const [animes, setAnimes] = useState<Anime[]>([]);
   const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ export default function Carrusel() {
       } catch (err) {
         console.error("Error al obtener los animes:", err);
       } finally {
-        setLoading(false);  
+        setLoading(false);  // Asegura que el loading se desactive siempre
       }
     };
   
@@ -109,3 +109,6 @@ export default function Carrusel() {
     </div>
   );
 }
+
+
+export default memo(Carrusel)

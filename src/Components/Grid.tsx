@@ -1,8 +1,9 @@
 import { Anime } from "../Types/Anime";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext,memo,useCallback} from "react";
 import { QueryContext } from "../App";
 import HoverCard from "./HoverCard";
 import Loading from "./Loding";
+import LogoPage from "../assets/cubo.png";
 
 interface GridProps {
   url: string;
@@ -18,8 +19,8 @@ function Grid({ url, text = "Tus resultados" }: GridProps) {
   // Construcción de URL dinámica
   const searchUrl = url.length === 0 ? `https://api.jikan.moe/v4/anime?q=${query}` : url;
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const memoizedFetch = useCallback(async () => {
+
       setLoading(true);
       setError(null);
 
@@ -37,14 +38,20 @@ function Grid({ url, text = "Tus resultados" }: GridProps) {
       } finally {
         setLoading(false);
       }
-    };
 
-    fetchData();
-  }, [searchUrl]); // Dependencia única para evitar llamadas innecesarias
+    console.log("Fetching data aqui")
+  },[query, searchUrl]);
+  
+  useEffect(() => {
+    memoizedFetch();
+  }, [memoizedFetch]); // Dependencia única para evitar llamadas innecesarias
 
   if (loading) return <Loading />;
   if (error) return <p className="text-red-500">{error}</p>;
-  if (data.length === 0) return <p>No se encontraron resultados.</p>;
+  if (data.length === 0) return <div className="w-full h-screen grid place-content-center">
+    <img src={LogoPage} alt="" />
+    <p className="font-semibold text-2xl text-center">No se encontraron resultados</p>
+  </div>;
 
   return (
     <div className="p-4 md:p-12 rounded-2xl">
@@ -58,4 +65,4 @@ function Grid({ url, text = "Tus resultados" }: GridProps) {
   );
 }
 
-export default Grid;
+export default memo(Grid)
