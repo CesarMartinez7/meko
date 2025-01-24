@@ -39,7 +39,6 @@ function Grid({ url, text = "Tus resultados" }: GridProps) {
         setLoading(false);
       }
 
-    console.log("Fetching data aqui")
   },[query, searchUrl]);
   
   useEffect(() => {

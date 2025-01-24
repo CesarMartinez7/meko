@@ -104,7 +104,6 @@ function Manga() {
   useEffect(() => {
     fetch(endPoint)
       .then((response) => {
-        console.log(response);
         if(response.ok){
           return response.json()
         }else{
