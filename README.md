@@ -1,6 +1,9 @@
-# AnimePy
+# animeTS
 
-AnimePy es una aplicación de streaming de anime que permite a los usuarios buscar, ver y explorar diferentes animes. La aplicación está construida con React y utiliza la API de Jikan para obtener datos de anime.
+<image src="./src/assets/cubo.png" alt="Descripción de la imagen" width=400px>
+
+
+__animeTS__ es una aplicación de streaming hecha con TS y React que permite a los usuarios buscar, ver y explorar diferentes animes. La aplicación está construida con React y utiliza la API de __Jikan__ para obtener datos de anime en la vista de anime se utilizan temporalmente API de vidsrc.
 
 ## Características
 
@@ -44,11 +47,11 @@ AnimePy es una aplicación de streaming de anime que permite a los usuarios busc
 
 ## Dependencias
 
-- **React**: Biblioteca de JavaScript para construir interfaces de usuario.
+- **React y TS**: Biblioteca de JavaScript para construir interfaces de usuario.
 - **React Router DOM**: Enrutador para aplicaciones React.
-- **Axios**: Cliente HTTP para realizar solicitudes a la API de Jikan.
-- **Express**: Framework para construir aplicaciones web en Node.js.
-- **Tailwind CSS**: Framework de CSS para diseñar interfaces de usuario.
+- **Vite**: Empaquetador de la app.
+- **Express**: Donde ser sirve la aplicacion.
+- **Tailwind CSS y DaysiUI**: Framework de CSS para diseñar interfaces de usuario.
 
 ## Contribuciones
 

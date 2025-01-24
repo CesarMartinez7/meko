@@ -16,8 +16,8 @@ export default function Navbar() {
     <div className="px-3 sticky top-1 z-40  ">
       <div className="navbar bg-base-100 glassMorf shadow-2xl borded  ">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl  " href="/">
-            animepy
+          <a className="btn btn-ghost text-xl" href="/">
+            animeTS
           </a>
         </div>
         <div className="flex-none gap-2">
