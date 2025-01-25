@@ -8,9 +8,11 @@ export default function History() {
     JSON.parse(localStorage.getItem("viendo") || "[]")
   );
 
-  if (logHistorial.length === 0) {
+  if (logHistorial.length === 0 ) {
     return (
-      <h1>Tu historial esta vacio o no esta viendo nada cabeza de verga</h1>
+        <div className="w-full h-svh text-center content-center">
+            <h1 className="font-bold text-[2rem]">Tu array esta vacio "[]" XD</h1>
+        </div>
     );
   }
 
