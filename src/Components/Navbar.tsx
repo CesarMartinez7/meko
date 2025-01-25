@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useContext, useRef } from "react";
 import { QueryContext } from "../App";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -85,7 +85,7 @@ export default function Navbar() {
                 <a>Settings</a>
               </li>
               <li>
-                <a>Logout</a>
+                <Link to={"/historial"}>Historial</Link>
               </li>
             </ul>
           </div>

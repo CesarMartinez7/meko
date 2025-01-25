@@ -6,6 +6,7 @@ const Anime = lazy(() => import("../Pages/Anime"))
 const ViewAnime = lazy(() => import("../Pages/ViewAnime"))
 const Home = lazy(() => import("../Pages/Home"))
 const CharactersDetails = lazy(() => import("../Pages/CharactersDetails"))
+const Historial = lazy(() => import("../Pages/Historial"))
 
 
 const allLazy =  {
@@ -13,7 +14,8 @@ const allLazy =  {
     Search,
     Anime,
     ViewAnime,
-    Home
+    Home,
+    Historial
 }
 
 

@@ -1,5 +1,5 @@
 import { Anime } from "../Types/Anime";
-import { useState, useEffect, useContext,memo} from "react";
+import { useState, useEffect, useContext} from "react";
 import { QueryContext } from "../App";
 import HoverCard from "./HoverCard";
 import Loading from "./Loding";
@@ -52,4 +52,4 @@ function Grid({ url, text = "Tus resultados" }: GridProps) {
   );
 }
 
-export default memo(Grid)
+export default Grid

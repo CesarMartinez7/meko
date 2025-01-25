@@ -193,22 +193,6 @@ function Manga() {
             <Icon icon="solar:play-line-duotone" width="20" height="20" />
             Play
           </button>
-          <button className="btn" onClick={() => {
-            interface InterfaceDatos {
-              name: string,
-              id: number
-            }
-
-            const datos : InterfaceDatos = {
-              name: anime?.title || "",
-              id : anime?.mal_id || 1
-            }
-            const datosAntiguo: Array<InterfaceDatos> = JSON.parse(localStorage.getItem("viendo") || "[]") 
-            const datosNew = [...datosAntiguo,datos]
-            localStorage.setItem("viendo",JSON.stringify(datosNew))
-          }}>
-            Guardar local
-          </button>
         </div>
 
         <div className="grid md:grid-cols-2 xl:grid-cols-2 md:divide-x divide-base-200 gap-5">

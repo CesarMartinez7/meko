@@ -3,7 +3,7 @@ import { useState, createContext, Suspense, useEffect } from "react";
 import allLazy from "./Routers/lazy";
 import Navbar from "./Components/Navbar";
 import Loading from "./Components/Loding";
-const { Search, Anime, ViewAnime,Home,CharactersDetails } = allLazy;
+const { Search, Anime, ViewAnime,Home,CharactersDetails,Historial } = allLazy;
 import Footer from "./Components/Footer";
 import "./App.css";
 
@@ -45,6 +45,7 @@ function App() {
           <BrowserRouter>
             <Navbar></Navbar>
             <Routes>
+              <Route path="/historial" element={<Historial/>}></Route>
               <Route path="character/:id" element={<CharactersDetails/>}></Route>
               <Route path="/" element={<Home/>}></Route>
               <Route path="/anime/:id" element={<Anime/>}></Route>
