@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Chapters } from "../Types/Chapter";
+import { Historial } from "../Types/Historial";
 
 interface PropsParams extends Record<string, string | undefined> {
   id: string;
@@ -43,18 +44,15 @@ export default function ViewAnime({}) {
       <div className="p-5 lg:p-12 h-screen overflow-y-auto">
         <section className="text-center">
         <button className="btn" onClick={() => {
-            interface InterfaceDatos {
-              name: string,
-              id: number,
-              capitulos: number
-            }
+        
 
-            const datos : InterfaceDatos = {
+            const datos : Historial = {
               name: name || "",
               id: numericId ,
-              capitulos : chapter
+              fullEpisodios : numericCaps,
+              lastEpisodios : chapter
             }
-            const datosAntiguo: Array<InterfaceDatos> = JSON.parse(localStorage.getItem("viendo") || "[]") 
+            const datosAntiguo: Array<Historial> = JSON.parse(localStorage.getItem("viendo") || "[]") 
             const datosNew = [...datosAntiguo,datos]
             localStorage.setItem("viendo",JSON.stringify(datosNew))
           }}>
