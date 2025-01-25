@@ -17,23 +17,17 @@ function Grid({ url, text = "Tus resultados" }: GridProps) {
 
   // Construcción de URL dinámica
   const searchUrl = url.length === 0 ? `https://api.jikan.moe/v4/anime?q=${query}` : url;
-  const memoizedFetch = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(searchUrl);
-
-        if (!response.ok) {
-          throw new Error("Error al obtener los datos");
+  const memoizedFetch = () => {
+      fetch(searchUrl).then(response => {
+        if(response.ok){
+          return response.json()
+        }else{
+          throw new Error (`Error en la respuesta del servidor ${response.status}`)
         }
-
-        const result = await response.json();
-        setData(result.data);
-      } catch (err) {
-        console.log("Hubo un error al capturar the data")
-      } finally {
-        setLoading(false);
-      }
-
+      }).then(data => {
+        setData(data.data || [])
+        setLoading(false)
+      })
   }
   
   useEffect(() => {

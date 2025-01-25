@@ -9,6 +9,8 @@ import "./App.css";
 
 
 
+
+
 interface QueryContextType {
   query: string;
   setQuery: (query: string) => void;

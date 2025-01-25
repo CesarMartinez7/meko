@@ -16,7 +16,7 @@ export default function HoverCard({item}: HoverCardProps) {
   };
   return (
     <a
-      className="relative overflow-hidden shadow-sm group rounded-2xl  z-10"
+      className="relative overflow-hidden shadow-sm group rounded-2xl z-10"
       onClick={handleAnchor}
     >
       <img
