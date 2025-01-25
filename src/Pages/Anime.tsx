@@ -48,15 +48,14 @@ const Characters = ({ id }: CharactersProps) => {
         {characters.map((character) => (
           <li
             key={character.character.mal_id}
-            className="rounded-lg flex-shrink-0 h-48  hover:scale-110  duration-200 relative"
-            data-hidden="1"
+            className=" flex-shrink-0 h-48  hover:scale-105 duration-200 relative"
             onClick={() => {
               navigate(`/character/${character.character.mal_id}`)
             }}
           >
             <img
               src={character.character.images.jpg.image_url}
-              className="rounded-lg w-fit max-w-[130px] h-full object-cover  -z-10"
+              className="rounded-lg w-full max-w-[130px] h-full object-cover "
               alt={`Imagen de ${character.character.name}`}
             />
             <div className="absolute inset-0 hover:z-30 flex justify-end flex-col bg-gradient-to-b w-full h-full from-transparent to-base-100 duration-200    text-[11px] p-3 ">
