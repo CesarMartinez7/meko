@@ -12,6 +12,7 @@ interface CharactersProps {
 }
 
 const Characters = ({ id }: CharactersProps) => {
+  const navigate = useNavigate()
   const [characters, setCharacters] = useState<Character[]>([]);
   const url = `https://api.jikan.moe/v4/anime/${id}/characters`;
 
@@ -49,6 +50,9 @@ const Characters = ({ id }: CharactersProps) => {
             key={character.character.mal_id}
             className="rounded-lg flex-shrink-0 h-48  hover:scale-110  duration-200 relative"
             data-hidden="1"
+            onClick={() => {
+              navigate(`/character/${character.character.mal_id}`)
+            }}
           >
             <img
               src={character.character.images.jpg.image_url}
