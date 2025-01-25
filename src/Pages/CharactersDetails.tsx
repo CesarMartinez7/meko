@@ -32,11 +32,10 @@ export default function CharactersDetails() {
         throw "Error al traer personaje por el ID";
       }
       const data = await response.json();
-      console.log(data.data);
       setData(data.data);
     };
     getCharactersById();
-  }, []);
+  }, [id]);
 
   return (
     <div className="p-14 grid grid-cols-1 gap-5 place-items-center">
