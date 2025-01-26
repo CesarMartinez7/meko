@@ -13,8 +13,8 @@ export default function Navbar() {
     toSearchNavigate("/search");
   };
   return (
-    <div className="px-3 sticky top-1 z-40   ">
-      <div className="navbar  to-base-100 glassMorf shadow-2xl borded  ">
+    <div className="px-3 sticky top-1 z-40 glassMorf  ">
+      <div className="navbar bg-base-100 rounded-lg shadow-2xl borded  ">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl" href="/">
             animeTS
@@ -39,7 +39,7 @@ export default function Navbar() {
                 className="theme-controller "
                 value={theme}
                 onClick={(): any => {
-                  setTheme(theme === "luxury" ? "dark" : "luxury");
+                  setTheme(theme === "winter" ? "dark" : "winter");
                 }}
               />
 

@@ -11,32 +11,35 @@ interface PropsParams extends Record<string, string | undefined> {
   caps: string;
 }
 
-
-
 export default function ViewAnime() {
   // Use paramns siendo uso paramns xd
   const { id, name, caps } = useParams<PropsParams>();
   // La data que tiene como interface los Chapteres
   const [data, setData] = useState<Array<Chapters>>([]);
   // El array de localStorage en forma de estado para manejarlo mejor
-  const [arrayLocalStorage] = useState<Historial[]>(JSON.parse(localStorage.getItem("viendo") || "[]") )
+  const [arrayLocalStorage] = useState<Historial[]>(
+    JSON.parse(localStorage.getItem("viendo") || "[]")
+  );
   // Funcion que va como predicado del filter
-  const isHaveLocalStorage = (valor : Historial,id: number) => {
-    return valor.id === id
-  }
+  const isHaveLocalStorage = (valor: Historial, id: number) => {
+    return valor.id === id;
+  };
 
   // Numericos id y capitulos o episodios
-  
+
   const numericId = id ? parseInt(id, 10) : 0;
   const numericCaps = caps ? parseInt(caps, 10) : 0;
-  
-  const resultado = arrayLocalStorage?.find((item) => isHaveLocalStorage(item,numericId))
-  const [chapter, setChapter] = useState<number>(resultado === undefined || null ? 1 : resultado.lastEpisodios);
+
+  const resultado = arrayLocalStorage?.find((item) =>
+    isHaveLocalStorage(item, numericId)
+  );
+  const [chapter, setChapter] = useState<number>(
+    resultado === undefined || null ? 1 : resultado.lastEpisodios
+  );
 
   // Comprueba si es esta doblado o no , em realidad es ingles o Japones
   const [isDub, setIsDub] = useState(true);
 
-  
   const handleClickToHistorial = () => {
     const datos: Historial = {
       name: name || "",
@@ -47,20 +50,28 @@ export default function ViewAnime() {
     const datosAntiguo: Array<Historial> = JSON.parse(
       localStorage.getItem("viendo") || "[]"
     );
-    const datosNew = [...datosAntiguo, datos];
-    localStorage.setItem("viendo", JSON.stringify(datosNew));
+
+    const comprobacionExist = datosAntiguo?.find((item) =>
+      isHaveLocalStorage(item, numericId)
+    );
+
+    if (comprobacionExist) {
+      window.alert("Ya añadistes este anime anteriormente");
+    } else {
+      const datosNew = [...datosAntiguo, datos];
+      localStorage.setItem("viendo", JSON.stringify(datosNew));
+    }
   };
 
   useEffect(() => {
     const url = `https://api.jikan.moe/v4/anime/${numericId}/episodes`;
     fetch(url)
-    .then((response) => response.json())
-    .then((datae) => {
-      setData(datae.data);
-    })
-    .catch((err) => console.log(err));
-    console.log(arrayLocalStorage?.find((item) => isHaveLocalStorage(item,numericId)))
-  }, [chapter,numericId]);
+      .then((response) => response.json())
+      .then((datae) => {
+        setData(datae.data);
+      })
+      .catch((err) => console.log(err));
+  }, [chapter, numericId]);
   return (
     <div className="md:h-screen w-full grid grid-cols-1 md:grid-cols-2">
       <div className="bg-black w-full md:h-screen">
@@ -74,7 +85,10 @@ export default function ViewAnime() {
       <div className="p-5 lg:p-12 h-screen overflow-y-auto">
         <section className="text-center">
           <div className="flex ">
-            <button className="btn btn-sm glass " onClick={handleClickToHistorial}>
+            <button
+              className="btn btn-sm  "
+              onClick={handleClickToHistorial}
+            >
               Añadir al historial
             </button>
           </div>

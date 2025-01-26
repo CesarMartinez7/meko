@@ -20,7 +20,7 @@ interface QueryContextType {
 
 const defaultValue: QueryContextType = {
   query: "",
-  theme: "luxury",
+  theme: "winter",
   setQuery: function () {},
   setTheme: function () {},
 };
@@ -30,7 +30,7 @@ export const QueryContext = createContext<QueryContextType>(defaultValue);
 function App() {
   const [query, setQuery] = useState("");
 
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "luxury");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "winter");
 
   useEffect(() => {
     localStorage.setItem("theme", theme)

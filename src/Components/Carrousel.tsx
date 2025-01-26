@@ -32,9 +32,6 @@ function Carrusel() {
   }, []);
   
 
-
-
-
   const handleNext = () => {
     setIndex((prevIndex) => (prevIndex + 1) % animes.length);
   };
@@ -69,7 +66,7 @@ function Carrusel() {
                   alt={anime.title}
                   className="w-full h-screen object-cover blur-sm"
                 />
-                <div className="absolute p-6  md:p-12 inset-0 bg-gradient-to-t from-black/100 to-transparent xl:p-20 flex flex-col justify-end gap-4">
+                <div className="absolute p-6  md:p-12 inset-0 bg-gradient-to-t from-black/100 to-transparent xl:p-20 flex flex-col justify-end gap-4 text-white">
                   <h2 className=" text-4xl font-medium">
                     {anime.title}
                   </h2>
@@ -87,7 +84,7 @@ function Carrusel() {
                     <Icon icon="solar:play-linear" width="16" height="16" />
                       Ver Ahora
                     </button>
-                    <button type="button" className="btn glass">
+                    <button type="button" className="btn ">
                     <Icon icon="solar:heart-linear" width="16" height="16" />
                       Añadir a favoritos
                     </button>

@@ -50,7 +50,7 @@ export default function History() {
                 <button
                   className="btn btn-error"
                   onClick={() => {
-                    localStorage.clear();
+                    localStorage.setItem("viendo","[]");
                     location.reload();
                   }}
                 >
