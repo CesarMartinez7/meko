@@ -3,26 +3,51 @@ import { useParams } from "react-router-dom";
 import { Chapters } from "../Types/Chapter";
 import { Historial } from "../Types/Historial";
 
+// Aqui pasar la url de la imagen como prop para que despues pase como prop de la vista de anime y cuando se añada al carrito """XDDD""" En realidad es el historial ,, se pasa la en el objecto que entra todos los datos y pueda tener un link de anime para poder verlo con una imagen al fondo, asi arrarse las peticiones fetch por medio de id como hize anteriormente en mi otro proyecto.
+
 interface PropsParams extends Record<string, string | undefined> {
   id: string;
   name: string;
   caps: string;
 }
 
-// Aqui pasar la url de la imagen como prop para que despues pase como prop de la vista de anime y cuando se añada al carrito """XDDD""" En realidad es el historial ,, se pasa la en el objecto que entra todos los datos y pueda tener un link de anime para poder verlo con una imagen al fondo, asi arrarse las peticiones fetch por medio de id como hize anteriormente en mi otro proyecto.
+interface BuscadorCapitulos {
+  array: Array<Historial>;
+  id: number
+}
 
+export default function ViewAnime() {
 
+  const [arrayLocalStorage] = useState<Historial[]>(JSON.parse(localStorage.getItem("viendo")))
 
-export default function ViewAnime({}) {
+  const isHaveLocalStorage = (valor : Historial,id: number) => {
+    return valor.id === id
+  }
   const [data, setData] = useState<Array<Chapters>>([]);
   const [chapter, setChapter] = useState<number>(1);
   const [isDub, setIsDub] = useState(true);
   const { id, name, caps } = useParams<PropsParams>();
-
   const numericId = id ? parseInt(id, 10) : 0;
   const numericCaps = caps ? parseInt(caps, 10) : 0;
 
+
+  
+  const handleClickToHistorial = () => {
+    const datos: Historial = {
+      name: name || "",
+      id: numericId,
+      fullEpisodios: numericCaps,
+      lastEpisodios: chapter,
+    };
+    const datosAntiguo: Array<Historial> = JSON.parse(
+      localStorage.getItem("viendo") || "[]"
+    );
+    const datosNew = [...datosAntiguo, datos];
+    localStorage.setItem("viendo", JSON.stringify(datosNew));
+  };
+
   useEffect(() => {
+    console.log(arrayLocalStorage?.find((item) => isHaveLocalStorage(item,numericId)))
     const url = `https://api.jikan.moe/v4/anime/${numericId}/episodes`;
     fetch(url)
       .then((response) => response.json())
@@ -30,7 +55,7 @@ export default function ViewAnime({}) {
         setData(datae.data);
       })
       .catch((err) => console.log(err));
-  }, [chapter]);
+  }, [chapter,numericId]);
   return (
     <div className="md:h-screen w-full grid grid-cols-1 md:grid-cols-2">
       <div className="bg-black w-full md:h-screen">
@@ -43,21 +68,11 @@ export default function ViewAnime({}) {
       </div>
       <div className="p-5 lg:p-12 h-screen overflow-y-auto">
         <section className="text-center">
-        <button className="btn" onClick={() => {
-        
-
-            const datos : Historial = {
-              name: name || "",
-              id: numericId ,
-              fullEpisodios : numericCaps,
-              lastEpisodios : chapter
-            }
-            const datosAntiguo: Array<Historial> = JSON.parse(localStorage.getItem("viendo") || "[]") 
-            const datosNew = [...datosAntiguo,datos]
-            localStorage.setItem("viendo",JSON.stringify(datosNew))
-          }}>
-            Ver despues 
-          </button>
+          <div className="flex ">
+            <button className="btn btn-sm glass " onClick={handleClickToHistorial}>
+              Añadir al historial
+            </button>
+          </div>
           <p className="text-[11px]">Estas viendo el episodio {chapter}</p>
           <h3 className="font-bold text-3xl"> {name}</h3>
           <p className="text-[13px] font-extralight"> </p>

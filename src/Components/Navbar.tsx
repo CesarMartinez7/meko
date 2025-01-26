@@ -9,7 +9,7 @@ export default function Navbar() {
   const { setQuery, setTheme, theme } = useContext(QueryContext);
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    setQuery(inputRef?.current?.value || "");
+    setQuery(inputRef?.current?.value || "Goku");
     toSearchNavigate("/search");
   };
   return (
@@ -76,16 +76,10 @@ export default function Navbar() {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
+                <Link to={"/historial"}>Historial</Link>
               </li>
               <li>
                 <a>Settings</a>
-              </li>
-              <li>
-                <Link to={"/historial"}>Historial</Link>
               </li>
             </ul>
           </div>
