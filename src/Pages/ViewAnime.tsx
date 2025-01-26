@@ -84,19 +84,7 @@ export default function ViewAnime() {
       </div>
       <div className="p-5 lg:p-12 h-screen overflow-y-auto">
         <section className="text-center">
-          <div className="flex ">
-            <button
-              className="btn btn-sm  "
-              onClick={handleClickToHistorial}
-            >
-              Añadir al historial
-            </button>
-          </div>
-          <p className="text-[11px]">Estas viendo el episodio {chapter}</p>
-          <h3 className="font-bold text-3xl"> {name}</h3>
-          <p className="text-[13px] font-extralight"> </p>
-          <p className="text-[13px]">{data[chapter]?.title}</p>
-          <div className="flex gap-2 mb-4 justify-between">
+        <div className="flex gap-2 mb-4 justify-between">
             <div className="">
               <p className="text-left font-semibold">Idiomas</p>
               <div className="flex gap-2">
@@ -125,6 +113,18 @@ export default function ViewAnime() {
                 <button className="btn btn-sm ">Vidsrc</button>
               </div>
             </div>
+          </div>
+          <p className="text-[11px]">Estas viendo el episodio {chapter}</p>
+          <h3 className="font-bold text-3xl"> {name}</h3>
+          <p className="text-[13px] font-extralight"> </p>
+          <p className="text-[13px]">{data[chapter]?.title}</p>
+          <div className="flex mb-3 ">
+            <button
+              className="btn btn-sm  "
+              onClick={handleClickToHistorial}
+            >
+              Añadir al historial
+            </button>
           </div>
         </section>
         <ul className="grid grid-cols-5 lg:grid-cols-10 gap-2 ">

@@ -29,7 +29,7 @@ export default function History() {
       <div className="flex justify-between">
         <h3 className="font-semibold text-lg">Estuviste viendo</h3>
         {/* Open the modal using document.getElementById('ID').showModal() method */}
-        <button className="btn btn-sm glass" onClick={handleClickToDelete}>
+        <button className="btn btn-sm " onClick={handleClickToDelete}>
           <Icon icon="tabler:trash" width="20" height="20" /> Olvidar historial
         </button>
         <dialog id="my_modal_1" className="modal ">
@@ -78,6 +78,7 @@ export default function History() {
               <p>Identifacion: {anime.id}</p>
               <h3>Ultimo episodio visto: {anime.lastEpisodios}</h3>
               <h3>Episodios totales: {anime.fullEpisodios}</h3>
+              <h3>Episodios faltantes : {anime.fullEpisodios - anime.lastEpisodios}</h3>
             </div>
           </li>
         ))}
