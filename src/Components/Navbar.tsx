@@ -3,6 +3,7 @@ import React, { useContext, useRef } from "react";
 import { QueryContext } from "../App";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
+
 export default function Navbar() {
   const inputRef = useRef<HTMLInputElement>(null);
   const toSearchNavigate = useNavigate();
@@ -16,8 +17,9 @@ export default function Navbar() {
     <div className="px-3 sticky top-1 z-40 glassMorf  ">
       <div className="navbar bg-base-100 rounded-lg shadow-2xl borded  ">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl" href="/">
-            animeTS
+          <a className="btn btn-ghost text-xl flex flex-row " href="/">
+          <span>meko</span>
+          <Icon icon="pixelarticons:coffee-alt" width="24" height="24" />
           </a>
         </div>
         <div className="flex-none gap-2">
