@@ -124,7 +124,9 @@ function Manga() {
   }
   return (
     <div className="mt-auto lg:p-7">
-      <div className="hidden md:block w-full h-[30vh] bg-gradient-to-b  bg-stone-950  "></div>
+      <div className="hidden md:block w-full h-[30vh]  backdrop-blur-md  ">
+        <img src={anime?.images.webp.large_image_url} alt={`Imagen de ${anime?.title}`} className="h-full grayscale-[1] hover:grayscale-0 duration-200 transition-all w-full object-cover blur-sm" />
+      </div>
       <div className="p-10 rounded-lg top-48 md:absolute w-full z-0 ">
         <div className=" w-64">
           <img onClick={() => {
