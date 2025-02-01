@@ -1,7 +1,7 @@
-# animeTS
+# mekoTs
 
 
-__animeTS__ es una aplicación de streaming hecha con TS y React que permite a los usuarios buscar, ver y explorar diferentes animes. La aplicación está construida con React y utiliza la API de __Jikan__ para scraper y obtener datos de los animes y tus personajes favoritos, en la vista se utiliza la api gratuita de vidsrc.
+__meko__ es una aplicación de streaming hecha con TS y React que permite a los usuarios buscar, ver y explorar diferentes animes. La aplicación está construida con React y utiliza la API de __Jikan__ para scraper y obtener datos de los animes y tus personajes favoritos, en la vista se utiliza la api gratuita de vidsrc.
 
 ## Características
 
