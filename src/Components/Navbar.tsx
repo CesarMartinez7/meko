@@ -14,7 +14,7 @@ export default function Navbar() {
     toSearchNavigate("/search");
   };
   return (
-    <div className="px-3 sticky top-1 z-40 glassMorf  ">
+    <div className="px-3 sticky top-1 z-40   ">
       <div className="navbar bg-base-100 rounded-lg shadow-2xl borded  ">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl flex flex-row " href="/">
