@@ -119,6 +119,12 @@ function Manga() {
       });
   }, [id]);
 
+  useEffect(() => {
+    scrollTo(0,0)
+  },[
+    
+  ])
+
   if(isLoading){
     <Loading/>
   }

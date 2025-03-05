@@ -40,7 +40,7 @@ export default function Navbar() {
                 type="checkbox"
                 className="theme-controller "
                 value={theme}
-                onClick={(): any => {
+                onClick={() => {
                   setTheme(theme === "winter" ? "dark" : "winter");
                 }}
               />
